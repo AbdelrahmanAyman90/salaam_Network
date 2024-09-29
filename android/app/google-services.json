@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "482290448414",
+    "project_id": "halaqa-quran",
+    "storage_bucket": "halaqa-quran.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482290448414:android:50469ea815b4508eccd60f",
+        "android_client_info": {
+          "package_name": "com.example.halqahquran"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFvRekGWfV7xuJpixNdxE9Lr-cPgCujkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
