@@ -3,10 +3,10 @@ import 'dart:developer';
 import 'package:arabic_font/arabic_font.dart';
 import 'package:flutter/material.dart';
 import 'package:halqahquran/core/theme/color.dart';
-import 'package:halqahquran/core/theme/style.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/feature/muslem_service/data/model/azkar_model.dart';
 import 'package:halqahquran/feature/muslem_service/ui/screen/zekr_screen.dart';
-import 'package:halqahquran/util/screen_util.dart';
+import 'package:halqahquran/core/util/screen_util.dart';
 import 'package:page_transition/page_transition.dart';
 
 class SingelIteamServiceWidget extends StatelessWidget {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:halqahquran/core/theme/color.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
 
 class IsHaveAccount extends StatelessWidget {
   const IsHaveAccount(
@@ -17,13 +18,15 @@ class IsHaveAccount extends StatelessWidget {
       children: [
         Text(
           msg,
-          style: TextStyle(fontSize: 16),
+          style: TextStyles.semiBold14.copyWith(
+            fontSize: 16,
+          ),
         ),
         TextButton(
             onPressed: onPressed,
             child: Text(
               msgAfter,
-              style: TextStyle(color: AppColor.primeColor, fontSize: 17),
+              style: TextStyles.semiBold18.copyWith(color: AppColor.primeColor),
             ))
       ],
     );

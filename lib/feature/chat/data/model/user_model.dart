@@ -17,6 +17,7 @@ class UserModel {
         name: doc['name'],
         lastSean: doc['lastSean']);
   }
+
   // Convert UserModel to a Map (for Firestore or other purposes)
   Map<String, dynamic> toMap() {
     return {

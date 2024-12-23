@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_function/check_internet.dart';
 import 'package:halqahquran/core/global/global_widget/show_toats.dart';
-import 'package:halqahquran/util/screen_util.dart';
+import 'package:halqahquran/core/util/screen_util.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/feature/muslem_service/cubit/cubit/sevice_muslm_cubit.dart';

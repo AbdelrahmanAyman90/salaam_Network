@@ -7,7 +7,7 @@ import 'package:halqahquran/core/global/global_widget/error_snakbar.dart';
 import 'package:halqahquran/core/global/global_widget/show_toats.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
-import 'package:halqahquran/core/theme/style.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/feature/chat/cubit/cubit/chat_cubit.dart';
 
 class BottomSheatInChatScree extends StatelessWidget {

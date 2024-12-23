@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_get_date.dart';
 import 'package:halqahquran/core/global/global_function/remin_time.dart';
-import 'package:halqahquran/core/theme/style.dart';
-import 'package:halqahquran/feature/home/cubit/cubit/pray_cubit.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
+import 'package:halqahquran/feature/pray_time/ui/cubit/pray_cubit.dart';
 
 class RemineTime extends StatefulWidget {
   const RemineTime({super.key});

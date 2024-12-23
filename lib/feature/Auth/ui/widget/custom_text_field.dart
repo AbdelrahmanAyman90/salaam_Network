@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  final String msg;
+  final String hintText;
   final Icon icons;
   final TextEditingController controllar;
+  final TextInputType textInputType;
 
   final String? Function(String?) validator;
   const CustomTextField(
       {Key? key,
-      required this.msg,
+      required this.textInputType,
+      required this.hintText,
       required this.icons,
       required this.controllar,
       required this.validator})
@@ -16,27 +18,27 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: const Color.fromARGB(255, 235, 232, 232),
-      ),
-      padding: const EdgeInsets.only(right: 8, bottom: 5),
-      child: TextFormField(
-        controller: controllar,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: msg,
-          prefixIcon: icons,
+    return TextFormField(
+      keyboardType: textInputType,
+      controller: controllar,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide.none,
         ),
-        validator: (value) {
-          String? validationResult = validator(value);
+        hintText: hintText,
+        prefixIcon: icons,
+        fillColor: const Color.fromARGB(255, 231, 231, 231),
 
-          return validationResult;
-        },
-        autovalidateMode: AutovalidateMode.onUserInteraction,
+        //  const Color.fromARGB(255, 235, 232, 232),
+        filled: true,
       ),
+      validator: (value) {
+        String? validationResult = validator(value);
+
+        return validationResult;
+      },
+      autovalidateMode: AutovalidateMode.onUserInteraction,
     );
   }
 }

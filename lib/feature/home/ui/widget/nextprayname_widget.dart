@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_convert_hour.dart';
 import 'package:halqahquran/core/global/global_widget/error_snakbar.dart';
-import 'package:halqahquran/core/theme/style.dart';
-import 'package:halqahquran/feature/home/cubit/cubit/pray_cubit.dart';
-import 'package:halqahquran/util/const_varible.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
+import 'package:halqahquran/feature/pray_time/ui/cubit/pray_cubit.dart';
+import 'package:halqahquran/core/util/const_varible.dart';
 
 class NextPrayNmaeAndTime extends StatelessWidget {
   const NextPrayNmaeAndTime({super.key});
@@ -38,7 +38,7 @@ class NextPrayNmaeAndTime extends StatelessWidget {
                   : Text(
                       context.read<PrayCubit>().dateOfNextPray == null
                           ? "انتهت صلاوات اليوم"
-                          : "${praysName[context.read<PrayCubit>().dateOfNextPray!.entries.first.key]} ${convertToArabicAmPm(context.read<PrayCubit>().dateOfNextPray!.entries.first.value)} ",
+                          : "${praysName[context.read<PrayCubit>().dateOfNextPray!.entries.first.key].arabic} ${convertToArabicAmPm(context.read<PrayCubit>().dateOfNextPray!.entries.first.value)} ",
                       style: TextAppStyle.mainTittel.copyWith(
                         color: Colors.white,
                         fontSize: 22.sp,

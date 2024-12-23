@@ -1,53 +1,40 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/theme/color.dart';
-import 'package:halqahquran/core/theme/style.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
 
 class TopPageContiner extends StatelessWidget {
-  const TopPageContiner({super.key, required this.tittal, required this.hight});
-  final String tittal;
-  final double hight;
+  const TopPageContiner({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height * .35,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [
-            AppColor.primeColor.withOpacity(.5),
-            AppColor.primeColor.withOpacity(.7),
-            const Color.fromRGBO(77, 201, 164, 1).withOpacity(.9),
-          ], end: Alignment.bottomCenter, begin: Alignment.topCenter),
-          borderRadius:
-              const BorderRadius.only(bottomLeft: Radius.circular(150))),
-      child: Stack(children: [
-        Center(
-          child: Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: const Color.fromARGB(255, 40, 126, 100),
-                width: 2.0,
-              ),
-            ),
-            child: ClipOval(
-              child: Image.asset(
-                "assets/images/Rectangle.jpg",
-                fit: BoxFit.cover,
-              ),
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          FadeInUp(
+            duration: const Duration(milliseconds: 1000),
+            child: Text(
+              "تسجيل الدخول",
+              style: TextStyles.semiBold26
+                  .copyWith(color: Colors.white, fontSize: 32), // TextStyle
             ),
           ),
-        ),
-        Positioned(
-          left: hight,
-          bottom: 20,
-          child: Text(
-            tittal,
-            style: TextAppStyle.mainTittel,
+          SizedBox(height: 10),
+          FadeInUp(
+            duration: const Duration(milliseconds: 1300),
+            child: Text(
+              "اهلا بعودتك مرة أخرى",
+              style: TextStyles.semiBold18
+                  .copyWith(color: Colors.white, fontSize: 16),
+            ),
           ),
-        )
-      ]),
+        ],
+      ),
     );
   }
 }

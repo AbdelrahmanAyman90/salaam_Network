@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
-import 'package:halqahquran/core/theme/style.dart';
-import 'package:halqahquran/util/screen_util.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
+import 'package:halqahquran/core/util/screen_util.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 

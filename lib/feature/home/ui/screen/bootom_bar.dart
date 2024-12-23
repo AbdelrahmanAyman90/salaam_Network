@@ -5,10 +5,14 @@ import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/feature/chat/data/firebase_chat_operation.dart';
 import 'package:halqahquran/feature/chat/ui/screen/home_chat_screen.dart';
 import 'package:halqahquran/feature/home/ui/screen/home_body.dart';
+import 'package:halqahquran/feature/edit_profile/ui/screen/edit_profile_body.dart';
+import 'package:halqahquran/feature/profile/ui/views/profile_screen.dart';
 import 'package:intl/intl.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+  const BottomNavBar({
+    super.key,
+  });
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -21,7 +25,7 @@ class _BottomNavBarState extends State<BottomNavBar>
     const HomeScreen(),
     ChatHameScreen(),
     const Center(child: Text("stream")),
-    const Center(child: Text("info")),
+    const ProfileScreen(),
   ];
 
   FirebaseChatOperation? f; // Declare FirebaseChatOperation here
@@ -37,28 +41,28 @@ class _BottomNavBarState extends State<BottomNavBar>
   }
 
   @override
-  void dispose() {
-    f!.updateLastSean(
-      status: convertToArabicAmPm(DateFormat.Hm().format(DateTime.now())),
-    ); // Set user status to offline on app close
-    WidgetsBinding.instance
-        .removeObserver(this); // Stop observing lifecycle events
-    super.dispose();
-  }
+  // void dispose() {
+  //   // f!.updateLastSean(
+  //   //   status: convertToArabicAmPm(DateFormat.Hm().format(DateTime.now())),
+  //   // ); // Set user status to offline on app close
+  //   // WidgetsBinding.instance
+  //   //     .removeObserver(this); // Stop observing lifecycle events
+  //   // super.dispose();
+  // }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    // Handle app lifecycle changes
-    if (state == AppLifecycleState.paused ||
-        state == AppLifecycleState.inactive) {
-      f!.updateLastSean(
-          status: convertToArabicAmPm(DateFormat.Hm().format(DateTime
-              .now()))); // Set user status to offline when app goes to background
-    } else if (state == AppLifecycleState.resumed) {
-      f!.updateLastSean(
-          status: 'online'); // Set user status to online when app resumes
-    }
-  }
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   // Handle app lifecycle changes
+  //   // if (state == AppLifecycleState.paused ||
+  //   //     state == AppLifecycleState.inactive) {
+  //   //   f!.updateLastSean(
+  //   //       status: convertToArabicAmPm(DateFormat.Hm().format(DateTime
+  //   //           .now()))); // Set user status to offline when app goes to background
+  //   // } else if (state == AppLifecycleState.resumed) {
+  //   //   f!.updateLastSean(
+  //   //       status: 'online'); // Set user status to online when app resumes
+  //   // }
+  // }
 
   @override
   Widget build(BuildContext context) {

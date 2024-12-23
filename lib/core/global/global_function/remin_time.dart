@@ -25,10 +25,5 @@ String reminTime(String time) {
   String seconds =
       difference.inSeconds.remainder(60).toString().padLeft(2, '0');
 
-  // log("------------");
-  // log("Hours: $hours");
-  // log("Minutes: $minutes");
-  // log("Seconds: $seconds");
-
   return "$hours:$minutes:$seconds";
 }

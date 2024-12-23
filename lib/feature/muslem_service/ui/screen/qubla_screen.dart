@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:halqahquran/core/global/global_widget/safescreen.dart';
-import 'package:halqahquran/util/permission_handelr.dart';
+import 'package:halqahquran/core/service/permission_service.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 
@@ -40,7 +40,7 @@ class _QublaScreenState extends State<QublaScreen>
         future: permission.checkLocationPermission(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasData && snapshot.data == true) {
             return StreamBuilder(
               stream: FlutterQiblah.qiblahStream,
@@ -96,8 +96,8 @@ class _QublaScreenState extends State<QublaScreen>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Location permission is required.'),
-                  SizedBox(height: 20),
+                  const Text('Location permission is required.'),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () async {
                       PermissionStatus status =
@@ -108,7 +108,7 @@ class _QublaScreenState extends State<QublaScreen>
                         setState(() {});
                       }
                     },
-                    child: Text('Request Permission'),
+                    child: const Text('Request Permission'),
                   ),
                 ],
               ),

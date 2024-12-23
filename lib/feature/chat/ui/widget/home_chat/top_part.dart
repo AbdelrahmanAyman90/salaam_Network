@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:halqahquran/core/theme/style.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/feature/chat/cubit/cubit/chat_cubit.dart';
 import 'package:halqahquran/feature/chat/ui/screen/home_chat_screen.dart';
 import 'package:halqahquran/feature/chat/ui/widget/home_chat/bottomsheet.dart';

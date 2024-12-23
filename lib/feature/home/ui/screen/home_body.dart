@@ -7,7 +7,7 @@ import 'package:halqahquran/feature/home/ui/widget/online_widget.dart';
 import 'package:halqahquran/feature/home/ui/widget/service_continer.dart';
 import 'package:halqahquran/feature/home/ui/widget/top_page_home.dart';
 import 'package:halqahquran/feature/muslem_service/cubit/cubit/sevice_muslm_cubit.dart';
-import 'package:halqahquran/util/screen_util.dart';
+import 'package:halqahquran/core/util/screen_util.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

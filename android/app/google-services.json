@@ -12,7 +12,20 @@
           "package_name": "com.example.halqahquran"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "482290448414-hvjsjojnd2d49rkj5u71jg0chgtt1424.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.halqahquran",
+            "certificate_hash": "1b8ea50007768eaad543267b27ad484e6789eb31"
+          }
+        },
+        {
+          "client_id": "482290448414-72it75nnt98vv23cfeqte3n4bgc3rme6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAFvRekGWfV7xuJpixNdxE9Lr-cPgCujkk"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482290448414-72it75nnt98vv23cfeqte3n4bgc3rme6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "482290448414-pa4c2f03bmuph6i4td05sbbp8lvbo903.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.halqahquran"
+              }
+            }
+          ]
         }
       }
     }

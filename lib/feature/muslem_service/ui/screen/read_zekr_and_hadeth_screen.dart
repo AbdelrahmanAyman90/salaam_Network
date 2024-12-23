@@ -5,7 +5,7 @@ import 'package:halqahquran/core/global/global_widget/safescreen.dart';
 import 'package:halqahquran/core/global/global_widget/top_page_service.dart';
 
 import 'package:halqahquran/feature/muslem_service/ui/widget/iteam_service_widget.dart';
-import 'package:halqahquran/util/screen_util.dart';
+import 'package:halqahquran/core/util/screen_util.dart';
 
 class ReadZekrAndHadethScreen extends StatelessWidget {
   const ReadZekrAndHadethScreen(
@@ -23,8 +23,9 @@ class ReadZekrAndHadethScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                  vertical: AppScreenUtil.getResponsiveHeight(context, .02),
-                  horizontal: AppScreenUtil.getResponsiveWidth(context, .02)),
+                vertical: AppScreenUtil.getResponsiveHeight(context, .02),
+                horizontal: AppScreenUtil.getResponsiveWidth(context, .02),
+              ),
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),

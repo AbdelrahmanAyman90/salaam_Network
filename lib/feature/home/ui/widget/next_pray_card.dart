@@ -5,7 +5,7 @@ import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/feature/home/ui/widget/nextprayname_widget.dart';
 import 'package:halqahquran/feature/home/ui/widget/remintime_for_pray.dart';
-import 'package:halqahquran/util/screen_util.dart';
+import 'package:halqahquran/core/util/screen_util.dart';
 
 class NextPrayCard extends StatelessWidget {
   const NextPrayCard({super.key});

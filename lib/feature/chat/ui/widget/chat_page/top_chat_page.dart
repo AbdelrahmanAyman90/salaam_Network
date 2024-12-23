@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
-import 'package:halqahquran/core/theme/style.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/feature/chat/data/firebase_chat_operation.dart';
 import 'package:halqahquran/feature/chat/data/model/user_model.dart';
 

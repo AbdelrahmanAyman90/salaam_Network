@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:halqahquran/core/global/global_widget/safescreen.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
-import 'package:halqahquran/util/screen_util.dart';
+import 'package:halqahquran/core/util/screen_util.dart';
 
 class TsbihScreen extends StatefulWidget {
   const TsbihScreen({super.key});
@@ -129,13 +129,14 @@ class _TsbihScreenState extends State<TsbihScreen> {
               alignment: FractionalOffset.centerRight,
               child: Text(
                 "${tasbehZekr.length}/${currentIndex + 1}",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 234, 231, 231),
+                  color: const Color.fromARGB(255, 234, 231, 231),
                   borderRadius: BorderRadius.circular(12)),
               child: Padding(
                 padding:
@@ -148,13 +149,14 @@ class _TsbihScreenState extends State<TsbihScreen> {
                         currentIndex > 0
                             ? IconButton(
                                 onPressed: _prevZekr,
-                                icon: Icon(Icons.arrow_back_ios))
-                            : SizedBox(width: 48), // placeholder for alignment
+                                icon: const Icon(Icons.arrow_back_ios))
+                            : const SizedBox(
+                                width: 48), // placeholder for alignment
                         Expanded(
                           child: Center(
                             child: Text(
                               tasbehZekr[currentIndex]['zekr'].toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 24, fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -162,14 +164,15 @@ class _TsbihScreenState extends State<TsbihScreen> {
                         currentIndex < tasbehZekr.length - 1
                             ? IconButton(
                                 onPressed: _nextZekr,
-                                icon: Icon(Icons.arrow_forward_ios))
-                            : SizedBox(width: 48), // placeholder for alignment
+                                icon: const Icon(Icons.arrow_forward_ios))
+                            : const SizedBox(
+                                width: 48), // placeholder for alignment
                       ],
                     ),
                     AppSize.hight(20),
                     Text(
                       tasbehZekr[currentIndex]['desc'].toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Color.fromARGB(255, 77, 201, 164),
                           fontSize: 22,
                           fontWeight: FontWeight.bold),
@@ -178,20 +181,20 @@ class _TsbihScreenState extends State<TsbihScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             GestureDetector(
               onTap: _incrementCount,
               child: Container(
                 width: 150,
                 height: 150,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppColor.primeColor,
                   shape: BoxShape.circle,
                 ),
                 child: Center(
                   child: Text(
                     counts[currentIndex].toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 48,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
@@ -199,15 +202,15 @@ class _TsbihScreenState extends State<TsbihScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
-              decoration:
-                  BoxDecoration(shape: BoxShape.circle, color: Colors.orange),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.orange),
               child: IconButton(
                   onPressed: () {
                     _resetCount();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.replay_sharp,
                     size: 40,
                     color: Colors.black,

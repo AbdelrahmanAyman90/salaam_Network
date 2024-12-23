@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:halqahquran/core/theme/color.dart';
-import 'package:halqahquran/core/theme/style.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(

@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:halqahquran/core/network/firebase_sevice.dart';
+import 'package:halqahquran/core/service/firebase_sevice.dart';
 import 'package:halqahquran/feature/chat/data/firebase_chat_operation.dart';
 import 'package:halqahquran/feature/chat/data/model/chat_model.dart';
 import 'package:halqahquran/feature/chat/data/model/user_model.dart';

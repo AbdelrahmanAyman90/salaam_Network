@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_widget/safescreen.dart';
 import 'package:halqahquran/core/global/global_widget/top_page.dart';
 import 'package:halqahquran/core/theme/color.dart';
-import 'package:halqahquran/core/theme/style.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/feature/muslem_service/data/model/hadeth_model.dart';
 import 'package:halqahquran/feature/muslem_service/ui/widget/count_zekr.dart';
 import 'package:halqahquran/feature/muslem_service/ui/widget/hadeth_widget.dart';
-import 'package:halqahquran/util/screen_util.dart';
+import 'package:halqahquran/core/util/screen_util.dart';
 
 class ZekrScreen extends StatelessWidget {
   const ZekrScreen(
