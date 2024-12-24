@@ -8,7 +8,7 @@ import 'package:halqahquran/core/global/global_widget/show_toats.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
-import 'package:halqahquran/feature/chat/cubit/cubit/chat_cubit.dart';
+import 'package:halqahquran/feature/chat/ui/cubit/cubit/chat_cubit.dart';
 
 class BottomSheatInChatScree extends StatelessWidget {
   const BottomSheatInChatScree({super.key});
@@ -74,7 +74,7 @@ class BottomSheatInChatScree extends StatelessWidget {
                       trailing: IconButton(
                         onPressed: () {
                           cubit.creatNewChat(
-                              otherUserId: cubit.allUserList[index].userId,
+                              otherUserId: cubit.allUserList[index].id,
                               OtherName: cubit.allUserList[index].name);
                         },
                         icon: const Icon(Icons.add),

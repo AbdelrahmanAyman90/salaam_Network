@@ -9,5 +9,5 @@ import '../../../feature/Auth/data/model/user_model.dart';
 UserEntity getUserData() {
   var jsonString = SharedPrefService.getString(kUser);
 
-  return UserModel.fromMap(jsonDecode(jsonString));
+  return UserModel.fromDocument(jsonDecode(jsonString));
 }

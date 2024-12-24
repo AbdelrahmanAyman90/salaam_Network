@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_widget/show_toats.dart';
 import 'package:halqahquran/core/theme/color.dart';
-import 'package:halqahquran/feature/muslem_service/ui/screen/quran_screens/audio_player_screen.dart';
-import 'package:halqahquran/feature/muslem_service/ui/screen/quran_screens/reder_name.dart';
+import 'package:halqahquran/feature/quran/ui/screen/audio_player_screen.dart';
+import 'package:halqahquran/feature/quran/ui/screen/reder_name_screen.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -64,7 +64,7 @@ class RedarNameWedgit extends StatelessWidget {
                 Text(
                   nameReder,
                   style: TextStyle(
-                      fontSize: 28.sp,
+                      fontSize: 24.sp,
                       color: AppColor.primeColor,
                       fontWeight: FontWeight.bold),
                 ),

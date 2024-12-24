@@ -8,7 +8,6 @@ import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/feature/chat/data/firebase_chat_operation.dart';
 import 'package:halqahquran/feature/chat/data/model/massage_model.dart';
-import 'package:halqahquran/feature/chat/data/model/user_model.dart';
 import 'package:intl/intl.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -63,6 +62,7 @@ class _MessageInputWidgetState extends State<MessageInputWidget> {
                     Expanded(
                       child: TextField(
                         controller: massageController,
+                        // To write Arabic
                         decoration: const InputDecoration(
                           hintText: "مراسله",
                           border: InputBorder.none,

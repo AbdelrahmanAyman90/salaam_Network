@@ -65,7 +65,7 @@ void actionTask() {
           if (isScheduled) {
             LocalNotificationService.showDailySchduledNotification(
               prayerName: prayerName.arabic,
-              prayerTime: prayerTime,
+              prayerTime: TimeOfDay(hour: 5, minute: 52),
             );
           }
         }

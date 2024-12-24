@@ -52,20 +52,6 @@ class ImageMassage extends StatelessWidget {
                             bottomRight: Radius.circular(30.r))),
                 child: Column(
                   children: [
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   children: [
-                    //     isSender
-                    //         ? const SizedBox()
-                    //         : Text(
-                    //             userNmae,
-                    //             style: TextAppStyle.normalTittel.copyWith(
-                    //                 color:
-                    //                     const Color.fromARGB(255, 7, 67, 135),
-                    //                 fontWeight: FontWeight.bold),
-                    //           ),
-                    //   ],
-                    // ),
                     InkWell(
                         onTap: () {
                           Navigator.push(

@@ -31,15 +31,22 @@ class UserModel extends UserEntity {
     );
   }
 //when i get from backend and i want to convert it to user model(get data from backend)
-  factory UserModel.fromMap(Map<String, dynamic> map) {
+  factory UserModel.fromDocument(Map<String, dynamic> map) {
     return UserModel(
-      id: map['id'] ?? '',
-      email: map['email'] ?? '',
-      name: map['name'] ?? '',
-      image: map['image'] ?? '',
-      lastSean: map['lastSean'] ?? '',
+      id: map['id'],
+      email: map['email'],
+      name: map['name'],
+      image: map['image'],
+      lastSean: map['lastSean'],
     );
   }
+  //   factory UserModel.fromDocument(Map<String, dynamic> doc) {
+//     return UserModel(
+//         userId: doc['id'], // Adjust based on your document structure
+//         email: doc['email'], // Ensure the field names match
+//         name: doc['name'],
+//         lastSean: doc['lastSean']);
+//   }
   //to add data  to backend
   Map<String, dynamic> toMap() {
     return {

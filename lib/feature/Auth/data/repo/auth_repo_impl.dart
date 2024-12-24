@@ -33,7 +33,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<UserEntity> getUserData({required String uId}) async {
     var userData =
         await firebaseService.getData(collection: 'user_info', documentId: uId);
-    return UserModel.fromMap(userData.data() as Map<String, dynamic>);
+    return UserModel.fromDocument(userData.data() as Map<String, dynamic>);
   }
 
   @override

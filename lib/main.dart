@@ -10,7 +10,7 @@ import 'package:halqahquran/core/service/get_it_service.dart';
 import 'package:halqahquran/core/service/shard_pref_service.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/feature/Auth/ui/views/login/login_screen.dart';
-import 'package:halqahquran/feature/chat/cubit/cubit/chat_cubit.dart';
+import 'package:halqahquran/feature/chat/ui/cubit/cubit/chat_cubit.dart';
 import 'package:halqahquran/feature/forget_password/cubit/forget_password_cubit.dart';
 import 'package:halqahquran/feature/notfication/local_notfication_helper.dart';
 import 'package:halqahquran/feature/notfication/workmanager_helper.dart';

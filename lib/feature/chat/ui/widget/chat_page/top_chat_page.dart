@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
+import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
 import 'package:halqahquran/feature/chat/data/firebase_chat_operation.dart';
-import 'package:halqahquran/feature/chat/data/model/user_model.dart';
 
 class TopCahtPage extends StatelessWidget {
   const TopCahtPage({
@@ -24,7 +24,9 @@ class TopCahtPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
         child: Row(
           children: [
-            const Icon(Icons.arrow_back_ios),
+            InkWell(
+                onTap: () => Navigator.pop(context),
+                child: const Icon(Icons.arrow_back_ios)),
             AppSize.width(8),
             CircleAvatar(
               radius: 26.sp,
@@ -41,7 +43,7 @@ class TopCahtPage extends StatelessWidget {
                   ),
                   StreamBuilder<String>(
                     stream: firebaseChatOperation
-                        .getlastSeanUser(userData.userId), // Pass the user's ID
+                        .getlastSeanUser(userData.id), // Pass the user's ID
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return Text("Loading last seen...");

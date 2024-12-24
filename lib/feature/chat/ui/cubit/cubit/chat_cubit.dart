@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:halqahquran/core/service/firebase_sevice.dart';
+import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
 import 'package:halqahquran/feature/chat/data/firebase_chat_operation.dart';
 import 'package:halqahquran/feature/chat/data/model/chat_model.dart';
-import 'package:halqahquran/feature/chat/data/model/user_model.dart';
 import 'package:meta/meta.dart';
 
 part 'chat_state.dart';
@@ -16,7 +16,7 @@ class ChatCubit extends Cubit<ChatState> {
   List<UserModel> allUserList = [];
   getAllUser() async {
     emit(GetAllUserLoading());
-    String id = await firebaseService.getFirebaseUserId();
+    String id = firebaseService.getFirebaseUserId();
 
     try {
       var result = await firebaseOperation.getAllUser(id);
@@ -53,10 +53,6 @@ class ChatCubit extends Cubit<ChatState> {
       log(e.toString());
       emit(GetAllUserFail(errorMassage: e.toString()));
     }
-  }
-
-  getAllChat() async {
-    String currentUserId = await firebaseService.getFirebaseUserId();
   }
 
   @override

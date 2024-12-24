@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
 import 'package:halqahquran/feature/chat/data/model/massage_model.dart';
-import 'package:halqahquran/feature/chat/data/model/user_model.dart';
 
 class ChatsModel {
   final String chatId;
@@ -26,8 +26,8 @@ class ChatsModel {
         member: List<String>.from(doc['member']),
         lastMessage: doc['lastMessage'],
         timestamp: doc['timestamp'],
-        otherUser: UserModel.fromDocument(doc['otherUserData']),
         currentUser: UserModel.fromDocument(doc['currentUserData']),
+        otherUser: UserModel.fromDocument(doc['otherUserData']),
         timelastMessage: doc['timelastMessage']);
   }
 }

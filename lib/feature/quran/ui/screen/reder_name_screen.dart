@@ -6,8 +6,8 @@ import 'package:halqahquran/core/global/global_widget/safescreen.dart';
 import 'package:halqahquran/core/global/global_widget/top_page.dart';
 
 import 'package:halqahquran/feature/quran/ui/quran_cubit.dart/cubit/quran_cubit.dart';
-import 'package:halqahquran/feature/muslem_service/ui/widget/quran_widgets/reder_name_widget.dart';
-import 'package:halqahquran/feature/muslem_service/ui/widget/quran_widgets/search_widget.dart';
+import 'package:halqahquran/feature/quran/ui/widgets/reder_name_widget.dart';
+import 'package:halqahquran/feature/quran/ui/widgets/search_widget.dart';
 
 class RederNameScreen extends StatelessWidget {
   final int indexSurah;
@@ -26,9 +26,9 @@ class RederNameScreen extends StatelessWidget {
                 child: TopPage(
               nameTittel: "القراء",
             )),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
                 child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: SearchTextField(
                 hint: "ادخل اسم القارئ",
               ),
@@ -73,7 +73,7 @@ bool checkIfFound(String indexSurah, List<String> allSurah) {
 String checkIndex(String index) {
   log(index.length.toString());
   if (index.length == 1) {
-    return '00${index}';
+    return '00$index';
   } else if (index.length == 2) {
     return '0$index';
   }

@@ -2,9 +2,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 class QuranImageScreen extends StatefulWidget {
-  final String n;
+  final int numberPage;
 
-  const QuranImageScreen({super.key, required this.n});
+  const QuranImageScreen({super.key, required this.numberPage});
 
   @override
   _QuranImageScreenState createState() => _QuranImageScreenState();
@@ -17,7 +17,7 @@ class _QuranImageScreenState extends State<QuranImageScreen> {
   @override
   void initState() {
     super.initState();
-    currentPage = int.parse(widget.n);
+    currentPage = widget.numberPage;
     _pageController = PageController(initialPage: currentPage - 1);
   }
 
@@ -75,9 +75,15 @@ class QuranRasterImage extends StatelessWidget {
         scaleEnabled: true, // Enable zooming
         minScale: 1.0, // Minimum zoom scale
         maxScale: 4.0, // Maximum zoom scale
-        child: Image.asset(imagePath,
-            fit: BoxFit.fill, // Make the image cover the entire screen
-            filterQuality: FilterQuality.low),
+        child: Image(
+          image: ResizeImage(
+            AssetImage(imagePath),
+            width: MediaQuery.of(context).size.width.toInt(),
+            height: MediaQuery.of(context).size.height.toInt(),
+          ),
+          fit: BoxFit.fill,
+          filterQuality: FilterQuality.low,
+        ),
       ),
     );
   }

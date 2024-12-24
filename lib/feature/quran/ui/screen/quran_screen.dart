@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:halqahquran/core/global/global_widget/safescreen.dart';
 import 'package:halqahquran/core/theme/size.dart';
-import 'package:halqahquran/feature/muslem_service/cubit/quran_cubit.dart/cubit/quran_cubit.dart';
+import 'package:halqahquran/feature/quran/ui/quran_cubit.dart/cubit/quran_cubit.dart';
 
-import 'package:halqahquran/feature/muslem_service/ui/widget/quran_widgets/sorah_list.dart';
-import 'package:halqahquran/feature/muslem_service/ui/widget/quran_widgets/stop_read.dart';
+import 'package:halqahquran/feature/quran/ui/widgets/sorah_list.dart';
+import 'package:halqahquran/feature/quran/ui/widgets/stop_read.dart';
 
 class QuranScreen extends StatelessWidget {
   const QuranScreen({super.key});

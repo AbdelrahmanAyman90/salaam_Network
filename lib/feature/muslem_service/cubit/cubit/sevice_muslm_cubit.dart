@@ -12,7 +12,7 @@ import 'package:halqahquran/feature/muslem_service/data/model/dua_model.dart';
 import 'package:halqahquran/feature/muslem_service/data/model/hadeth_model.dart';
 import 'package:halqahquran/feature/pray_time/ui/views/pray_screen.dart';
 import 'package:halqahquran/feature/muslem_service/ui/screen/qubla_screen.dart';
-import 'package:halqahquran/feature/muslem_service/ui/screen/quran_screens/quran_screen.dart';
+import 'package:halqahquran/feature/quran/ui/screen/quran_screen.dart';
 import 'package:halqahquran/feature/muslem_service/ui/screen/read_zekr_and_hadeth_screen.dart';
 import 'package:halqahquran/feature/muslem_service/ui/screen/tasabih_screen.dart';
 import 'package:halqahquran/feature/muslem_service/ui/screen/zekr_screen.dart';

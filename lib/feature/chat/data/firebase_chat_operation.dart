@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
 import 'package:intl/intl.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,8 +9,6 @@ import 'package:halqahquran/core/service/firebase_sevice.dart';
 import 'package:halqahquran/core/error/network_error.dart';
 import 'package:halqahquran/feature/chat/data/model/chat_model.dart';
 import 'package:halqahquran/feature/chat/data/model/massage_model.dart';
-import 'package:halqahquran/feature/chat/data/model/user_model.dart';
-import 'package:halqahquran/feature/muslem_service/data/model/azkar_model.dart';
 import 'package:uuid/uuid.dart';
 
 class FirebaseChatOperation {

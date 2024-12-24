@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_widget/safescreen.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
-import 'package:halqahquran/feature/muslem_service/ui/widget/quran_widgets/audio_operation_widget.dart';
+import 'package:halqahquran/feature/quran/ui/widgets/audio_operation_widget.dart';
 
 class AudioPlayScreen extends StatelessWidget {
   final String nameSorah;

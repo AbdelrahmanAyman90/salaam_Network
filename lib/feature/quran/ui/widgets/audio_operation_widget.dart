@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:halqahquran/core/global/global_widget/show_toats.dart';
-import 'package:halqahquran/feature/muslem_service/ui/screen/quran_screens/audio_player_screen.dart';
+import 'package:halqahquran/feature/quran/ui/screen/audio_player_screen.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart'; // For combining streams
 
@@ -64,7 +64,7 @@ class _AudioOperationState extends State<AudioOperation> {
             children: [
               // Rewind 10 seconds
               IconButton(
-                icon: Icon(Icons.replay_10),
+                icon: const Icon(Icons.replay_10),
                 onPressed: () {
                   final newPosition =
                       _audioPlayer.position - const Duration(seconds: 10);
@@ -82,26 +82,26 @@ class _AudioOperationState extends State<AudioOperation> {
                   if (processingState == ProcessingState.loading ||
                       processingState == ProcessingState.buffering) {
                     return Container(
-                      margin: EdgeInsets.all(8.0),
+                      margin: const EdgeInsets.all(8.0),
                       width: 64.0,
                       height: 64.0,
-                      child: CircularProgressIndicator(),
+                      child: const CircularProgressIndicator(),
                     );
                   } else if (playing != true) {
                     return IconButton(
-                      icon: Icon(Icons.play_arrow),
+                      icon: const Icon(Icons.play_arrow),
                       iconSize: 64.0,
                       onPressed: _audioPlayer.play,
                     );
                   } else if (processingState != ProcessingState.completed) {
                     return IconButton(
-                      icon: Icon(Icons.pause),
+                      icon: const Icon(Icons.pause),
                       iconSize: 64.0,
                       onPressed: _audioPlayer.pause,
                     );
                   } else {
                     return IconButton(
-                      icon: Icon(Icons.replay),
+                      icon: const Icon(Icons.replay),
                       iconSize: 64.0,
                       onPressed: () => _audioPlayer.seek(Duration.zero),
                     );
@@ -111,7 +111,7 @@ class _AudioOperationState extends State<AudioOperation> {
 
               // Forward 10 seconds
               IconButton(
-                icon: Icon(Icons.forward_10),
+                icon: const Icon(Icons.forward_10),
                 onPressed: () {
                   final newPosition =
                       _audioPlayer.position + const Duration(seconds: 10);
