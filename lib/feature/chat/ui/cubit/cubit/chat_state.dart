@@ -23,3 +23,9 @@ final class CreatNewChatFail extends ChatState {
   String errorMassage;
   CreatNewChatFail({required this.errorMassage});
 }
+
+final class DeleteUserSuccess extends ChatState {}
+
+final class DeleteUserFail extends ChatState {}
+
+final class DeleteUserLoading extends ChatState {}

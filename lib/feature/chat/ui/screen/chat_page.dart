@@ -5,15 +5,15 @@ import 'package:halqahquran/core/global/global_widget/safescreen.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
-import 'package:halqahquran/feature/chat/data/firebase_chat_operation.dart';
 import 'package:halqahquran/feature/chat/data/model/massage_model.dart';
+import 'package:halqahquran/feature/chat/data/repo/chat_repo_impl.dart';
 import 'package:halqahquran/feature/chat/ui/widget/chat_page/image_massage_model.dart';
 import 'package:halqahquran/feature/chat/ui/widget/chat_page/massage_input.dart';
 import 'package:halqahquran/feature/chat/ui/widget/chat_page/text_model.dart';
 import 'package:halqahquran/feature/chat/ui/widget/chat_page/top_chat_page.dart';
 
-class ChatPage extends StatefulWidget {
-  ChatPage({
+class MassagesScreen extends StatefulWidget {
+  const MassagesScreen({
     super.key,
     required this.chatId,
     required this.userDate,
@@ -22,11 +22,11 @@ class ChatPage extends StatefulWidget {
   final UserModel userDate;
 
   @override
-  State<ChatPage> createState() => _ChatPageState();
+  State<MassagesScreen> createState() => _MassagesScreenState();
 }
 
-class _ChatPageState extends State<ChatPage> {
-  final FirebaseChatOperation chatOperation = FirebaseChatOperation();
+class _MassagesScreenState extends State<MassagesScreen> {
+  final ChatRepoImpl chatOperation = ChatRepoImpl();
   final ScrollController scrollController = ScrollController();
 
   @override
@@ -81,8 +81,6 @@ class _ChatPageState extends State<ChatPage> {
                       reverse: true,
                       controller: scrollController,
                       itemBuilder: (context, index) {
-                        log(messagesDataList[index].senderId);
-
                         return Column(
                           children: [
                             messagesDataList[index].type.trim() == 'image'

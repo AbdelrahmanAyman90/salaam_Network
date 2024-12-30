@@ -9,6 +9,7 @@ import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/feature/chat/ui/cubit/cubit/chat_cubit.dart';
+import 'package:halqahquran/feature/chat/ui/widget/home_chat/image_widget.dart';
 
 class BottomSheatInChatScree extends StatelessWidget {
   const BottomSheatInChatScree({super.key});
@@ -16,18 +17,15 @@ class BottomSheatInChatScree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit = context.read<ChatCubit>();
-    return Container(
+    return SizedBox(
       height: 400.h,
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Directionality(
-              textDirection: TextDirection.rtl,
-              child: Text(
-                "ابدأ المحادثه مع اي مستخدم !!",
-                style: TextAppStyle.mainTittel
-                    .copyWith(color: AppColor.primeColor),
-              ),
+            Text(
+              "ابدأ المحادثه مع اي مستخدم !!",
+              style:
+                  TextAppStyle.mainTittel.copyWith(color: AppColor.primeColor),
             ),
             AppSize.hight(10),
             BlocConsumer<ChatCubit, ChatState>(listener: (context, state) {
@@ -58,11 +56,8 @@ class BottomSheatInChatScree extends StatelessWidget {
                   itemCount: cubit.allUserList.length,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      leading: CircleAvatar(
-                        radius: 28.sp,
-                        backgroundImage:
-                            const AssetImage("assets/images/Rectangle.jpg"),
-                      ),
+                      leading:
+                          ImageUserWidget(userChats: cubit.allUserList[index]),
                       title: Text(
                         cubit.allUserList[index].name,
                         style: TextAppStyle.normalTittel

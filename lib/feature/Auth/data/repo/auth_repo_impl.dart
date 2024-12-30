@@ -142,7 +142,7 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         id: user.uid,
         image: image,
-        lastSean: convertToArabicAmPm(DateFormat.Hm().format(DateTime.now())),
+        lastSean: convertToArabicAmPm(timeFormat.format(DateTime.now())),
       );
       // Store user data
       await addUser(userEntity: userEntity);

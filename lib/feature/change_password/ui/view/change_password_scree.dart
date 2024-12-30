@@ -33,7 +33,7 @@ class ChangePasswordScreen extends StatelessWidget {
             ),
             centerTitle: true,
           ),
-          body: ChangePasswordConsummer()),
+          body: const ChangePasswordConsummer()),
     );
   }
 }

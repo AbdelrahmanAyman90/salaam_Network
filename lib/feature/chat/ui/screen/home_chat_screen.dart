@@ -3,15 +3,22 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
-import 'package:halqahquran/feature/chat/data/firebase_chat_operation.dart';
+import 'package:halqahquran/feature/chat/data/repo/chat_repo_impl.dart';
 
 import 'package:halqahquran/feature/chat/ui/widget/home_chat/activ_user.dart';
 import 'package:halqahquran/feature/chat/ui/widget/home_chat/chats_list.dart';
 import 'package:halqahquran/feature/chat/ui/widget/home_chat/top_part.dart';
 
-class ChatHameScreen extends StatelessWidget {
-  ChatHameScreen({super.key});
-  FirebaseChatOperation chatOperation = FirebaseChatOperation();
+class HomeChatScreenBody extends StatefulWidget {
+  const HomeChatScreenBody({super.key});
+
+  @override
+  State<HomeChatScreenBody> createState() => _HomeChatScreenBodyState();
+}
+
+class _HomeChatScreenBodyState extends State<HomeChatScreenBody> {
+  ChatRepoImpl chatOperation = ChatRepoImpl();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -44,18 +51,20 @@ class ChatHameScreen extends StatelessWidget {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         return ActivUser(
-                          name: snapshot.data![index].name,
+                          userDate: snapshot.data![index],
                         );
                       },
                     );
                   }),
             ),
           ),
-          Divider(
+          const Divider(
             thickness: 1,
           ),
           //!user chat
-          Expanded(child: ChatUsersList())
+          Expanded(
+            child: ChatUsersList(),
+          )
         ],
       ),
     );

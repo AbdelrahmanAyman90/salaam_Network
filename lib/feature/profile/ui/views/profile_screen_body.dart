@@ -16,6 +16,7 @@ import 'package:halqahquran/feature/notfication/local_notfication_helper.dart';
 import 'package:halqahquran/feature/profile/ui/cubit/profile_cubit.dart';
 import 'package:halqahquran/feature/profile/ui/widget/notfication_body.dart';
 import 'package:halqahquran/feature/profile/ui/widget/profile_action_widget.dart';
+import 'package:halqahquran/feature/theam/cubit/theam_cubit.dart';
 
 class ProfileScreenBody extends StatefulWidget {
   const ProfileScreenBody({super.key});
@@ -125,13 +126,23 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
                 width: 45,
                 child: FittedBox(
                   fit: BoxFit.fill,
-                  child: Switch(
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    activeTrackColor: AppColor.primeColor,
-                    inactiveTrackColor: AppColor.backgroundColor,
-                    value: false,
-                    onChanged: (value) {},
-                    activeColor: AppColor.backgroundColor,
+                  child: BlocBuilder<TheamCubit, TheamState>(
+                    builder: (context, state) {
+                      return Switch(
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        activeTrackColor: AppColor.primeColor,
+                        inactiveTrackColor: AppColor.backgroundColor,
+                        value: context
+                            .read<TheamCubit>()
+                            .isDarkTheme, // Use the current theme state
+                        onChanged: (value) {
+                          context
+                              .read<TheamCubit>()
+                              .toggleTheme(); // Toggle theme on switch change
+                        },
+                        activeColor: AppColor.backgroundColor,
+                      );
+                    },
                   ),
                 ),
               ),
@@ -150,13 +161,39 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
             AppSize.hight(20),
             CustomButton(
               onPressed: () {
-                context.read<ProfileCubit>().logOutUser();
+                showDialog(
+                  context: context, //! Pass the parent context to the dialog
+                  builder: (dialogContext) {
+                    //! dialogContext is new
+                    return AlertDialog(
+                      title: const Text("تأكيد"),
+                      content: const Text("هل انت متاكد من انك تريد الخروج"),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(dialogContext);
+                          },
+                          child: const Text("الغاء"),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            //! Use the parent context here to access the Cubit
+                            context.read<ProfileCubit>().logOutUser();
+                            Navigator.pop(
+                                dialogContext); //! Close dialog after action
+                          },
+                          child: const Text("نعم"),
+                        ),
+                      ],
+                    );
+                  },
+                );
               },
               widgetButton: Text(
                 "تسجيل الخروج",
                 style: TextStyles.semiBold18.copyWith(color: Colors.white),
               ),
-            ),
+            )
           ],
         ),
       ),

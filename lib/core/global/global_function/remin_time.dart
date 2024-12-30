@@ -1,7 +1,8 @@
 import 'package:intl/intl.dart';
 
 String reminTime(String time) {
-  DateFormat timeFormat = DateFormat("HH:mm");
+  DateFormat timeFormat = DateFormat("HH:mm", 'en');
+
   DateTime now = DateTime.now();
 
   // Parse the target time as if it were today

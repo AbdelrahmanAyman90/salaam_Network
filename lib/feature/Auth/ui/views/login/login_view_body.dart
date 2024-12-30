@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:halqahquran/core/global/global_widget/error_snakbar.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
-import 'package:halqahquran/feature/Auth/cubit/login/login_cubit.dart';
+import 'package:halqahquran/feature/Auth/ui/cubit/login/login_cubit.dart';
 import 'package:halqahquran/feature/Auth/ui/views/login/login_screen.dart';
 import 'package:halqahquran/feature/Auth/ui/views/register/register_screen.dart';
 import 'package:halqahquran/feature/Auth/ui/widget/auth_by_another.dart';

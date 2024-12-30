@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:halqahquran/core/global/global_widget/error_snakbar.dart';
-import 'package:halqahquran/feature/Auth/cubit/social_auth/social_auth_cubit.dart';
-import 'package:halqahquran/feature/Auth/cubit/login/login_cubit.dart';
+import 'package:halqahquran/feature/Auth/ui/cubit/social_auth/social_auth_cubit.dart';
+import 'package:halqahquran/feature/Auth/ui/cubit/login/login_cubit.dart';
 import 'package:halqahquran/feature/Auth/ui/views/login/login_view_body.dart';
 import 'package:halqahquran/feature/home/ui/screen/bootom_bar.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';

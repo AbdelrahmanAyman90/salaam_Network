@@ -8,6 +8,7 @@ import 'package:halqahquran/core/service/shard_pref_service.dart';
 import 'package:halqahquran/core/util/const_varible.dart';
 import 'package:halqahquran/feature/notfication/local_notfication_helper.dart';
 import 'package:halqahquran/feature/pray_time/data/repo/pray_time_repo.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:workmanager/workmanager.dart';
 
@@ -40,11 +41,13 @@ class WorkManagerService {
 @pragma('vm-entry-point')
 void actionTask() {
   Workmanager().executeTask((taskName, inputData) async {
+    log("noooooot");
     WidgetsFlutterBinding.ensureInitialized();
     await SharedPrefService.init();
+    await initializeDateFormatting('en', null);
 
     final String currentDate = getDate(0);
-
+    log("currentDate:$currentDate");
     final prayTimeRepo =
         PrayTimeRepoImpl(apiServes: ApiServes(dio: creatdio()));
     final result =
@@ -65,7 +68,7 @@ void actionTask() {
           if (isScheduled) {
             LocalNotificationService.showDailySchduledNotification(
               prayerName: prayerName.arabic,
-              prayerTime: TimeOfDay(hour: 5, minute: 52),
+              prayerTime: prayerTime,
             );
           }
         }

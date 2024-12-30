@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:halqahquran/core/theme/color.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
-  final Icon icons;
+  final Icon? icons;
   final TextEditingController controllar;
   final TextInputType textInputType;
 
@@ -11,7 +12,7 @@ class CustomTextField extends StatelessWidget {
       {Key? key,
       required this.textInputType,
       required this.hintText,
-      required this.icons,
+      this.icons,
       required this.controllar,
       required this.validator})
       : super(key: key);
@@ -28,9 +29,7 @@ class CustomTextField extends StatelessWidget {
         ),
         hintText: hintText,
         prefixIcon: icons,
-        fillColor: const Color.fromARGB(255, 231, 231, 231),
-
-        //  const Color.fromARGB(255, 235, 232, 232),
+        fillColor: AppColor.fillTextField,
         filled: true,
       ),
       validator: (value) {

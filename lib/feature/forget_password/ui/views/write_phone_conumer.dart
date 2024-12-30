@@ -21,8 +21,6 @@ class WritePhoneConummer extends StatelessWidget {
               builder: (context) => const VerifyCodeConsummer(),
             ),
           );
-        } else if (state is PasswordResetError) {
-          showCustomSnackBar(context, state.error, Icons.error, false);
         }
       },
       builder: (context, state) {

@@ -33,13 +33,10 @@ class DateDisplay extends StatelessWidget {
                         fontSize: 17.sp,
                         fontWeight: FontWeight.normal,
                       )),
-                  Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: Text(
-                      date,
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(.6),
-                      ),
+                  Text(
+                    date,
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(.6),
                     ),
                   ),
                 ],

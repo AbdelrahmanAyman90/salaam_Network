@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:halqahquran/core/theme/size.dart';
-import 'package:halqahquran/feature/Auth/cubit/register/register_cubit.dart';
+import 'package:halqahquran/feature/Auth/ui/cubit/register/register_cubit.dart';
 import 'package:halqahquran/feature/Auth/ui/widget/auth_by_another.dart';
 import 'package:halqahquran/feature/Auth/ui/widget/choose_image.dart';
 

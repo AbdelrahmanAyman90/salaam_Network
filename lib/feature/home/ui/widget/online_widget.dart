@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
 
 class OnlineNow extends StatelessWidget {
   const OnlineNow({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 100,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -17,14 +18,14 @@ class OnlineNow extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Column(
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         radius: 30,
                         backgroundImage: AssetImage('assets/images/imaes.jpeg'),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
                         "User ${index + 1}",
-                        style: TextStyle(fontSize: 12, color: Colors.black),
+                        style: TextStyles.regular14,
                       ),
                     ],
                   )),
@@ -32,12 +33,13 @@ class OnlineNow extends StatelessWidget {
                 bottom: 35,
                 right: 0,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                   decoration: BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Live',
                     style: TextStyle(
                       fontSize: 10,

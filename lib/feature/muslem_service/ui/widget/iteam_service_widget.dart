@@ -48,7 +48,7 @@ class SingelIteamServiceWidget extends StatelessWidget {
               },
               icon: const Icon(
                 Icons.arrow_forward_ios,
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: Colors.white,
               ),
             ),
           ],

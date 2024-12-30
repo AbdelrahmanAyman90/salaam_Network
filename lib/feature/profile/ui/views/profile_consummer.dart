@@ -5,7 +5,6 @@ import 'package:halqahquran/core/global/global_widget/error_snakbar.dart';
 import 'package:halqahquran/feature/Auth/ui/views/login/login_screen.dart';
 import 'package:halqahquran/feature/profile/ui/cubit/profile_cubit.dart';
 import 'package:halqahquran/feature/profile/ui/views/profile_screen_body.dart';
-import 'package:halqahquran/feature/profile/ui/views/test.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class ProfileConsummer extends StatelessWidget {

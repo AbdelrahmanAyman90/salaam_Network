@@ -72,7 +72,7 @@ class PrayCubit extends Cubit<PrayState> {
     List<String?> praysTimeng = r.timings!.prayerTimes!;
 
     DateTime now = DateTime.now();
-    DateFormat timeFormat = DateFormat("HH:mm");
+    DateFormat timeFormat = DateFormat("HH:mm", 'en');
     List<DateTime> prayerDateTimes = praysTimeng.map((time) {
       return DateTime(now.year, now.month, now.day,
           timeFormat.parse(time!).hour, timeFormat.parse(time).minute);

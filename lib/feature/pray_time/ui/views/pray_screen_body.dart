@@ -16,8 +16,8 @@ class PrayScreenBody extends StatelessWidget {
     var cubit = context.read<PrayCubit>();
     return WillPopScope(
       onWillPop: () async {
-        // Perform your action when the back button is pressed
-        cubit.updatePrayTime(action: "");
+        // !Perform your action when the back button is pressed
+        //cubit.updatePrayTime(action: "");
 
         // Return true to allow the back navigation
         return true;
@@ -36,21 +36,19 @@ class PrayScreenBody extends StatelessWidget {
                       vertical:
                           AppScreenUtil.getResponsiveHeight(context, .002)),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      IconButton(
+                          onPressed: () {
+                            //!
+                            //   cubit.updatePrayTime(action: "");
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.arrow_back_ios_new)),
                       Text(
                         "اوقات الصلاه",
                         style: TextAppStyle.arabicStyle
                             .copyWith(color: Colors.black, fontSize: 18.sp),
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.ltr,
-                        child: IconButton(
-                            onPressed: () {
-                              cubit.updatePrayTime(action: "");
-                              Navigator.pop(context);
-                            },
-                            icon: const Icon(Icons.arrow_back_ios_new)),
                       ),
                     ],
                   ),

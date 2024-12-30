@@ -5,6 +5,8 @@ import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
 import 'package:halqahquran/feature/chat/data/firebase_chat_operation.dart';
+import 'package:halqahquran/feature/chat/data/repo/chat_repo_impl.dart';
+import 'package:halqahquran/feature/chat/ui/widget/home_chat/image_widget.dart';
 
 class TopCahtPage extends StatelessWidget {
   const TopCahtPage({
@@ -14,7 +16,7 @@ class TopCahtPage extends StatelessWidget {
   });
 
   final UserModel userData;
-  final FirebaseChatOperation firebaseChatOperation;
+  final ChatRepoImpl firebaseChatOperation;
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +30,7 @@ class TopCahtPage extends StatelessWidget {
                 onTap: () => Navigator.pop(context),
                 child: const Icon(Icons.arrow_back_ios)),
             AppSize.width(8),
-            CircleAvatar(
-              radius: 26.sp,
-              backgroundImage: const AssetImage("assets/images/imaes.jpeg"),
-            ),
+            ImageUserWidget(userChats: userData),
             AppSize.width(10),
             Expanded(
               child: Column(
@@ -39,7 +38,7 @@ class TopCahtPage extends StatelessWidget {
                 children: [
                   Text(
                     userData.name,
-                    style: TextAppStyle.normalTittel,
+                    style: TextStyles.semiBold22,
                   ),
                   StreamBuilder<String>(
                     stream: firebaseChatOperation

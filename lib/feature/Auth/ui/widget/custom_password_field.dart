@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:halqahquran/core/theme/color.dart';
 
 class PasswordField extends StatefulWidget {
   final TextEditingController passwordController;
@@ -23,7 +24,7 @@ class _PasswordFieldState extends State<PasswordField> {
           borderSide: BorderSide.none,
         ),
         hintText: "كلمه المرور",
-        fillColor: const Color.fromARGB(255, 231, 231, 231),
+        fillColor: AppColor.fillTextField,
         filled: true,
         prefixIcon: const Icon(
           Icons.vpn_key,

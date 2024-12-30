@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_get_date.dart';
@@ -21,6 +23,13 @@ class PrayCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit = context.read<PrayCubit>();
+    log("qqqqqqqqqqqqqqqqqqqqqqqqqqq");
+
+    log(cubit.dateOfNextPray!.entries.first.key.toString());
+    log(index.toString());
+    log(getDate(0));
+    log(cubit.currentDate.toString());
+
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: AppScreenUtil.getResponsiveHeight(context, .015),

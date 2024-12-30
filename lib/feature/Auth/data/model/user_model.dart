@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_convert_hour.dart';
+import 'package:halqahquran/core/util/const_varible.dart';
 import 'package:halqahquran/feature/Auth/domain/entity/user_entity.dart';
 import 'package:intl/intl.dart';
 
@@ -14,7 +15,7 @@ class UserModel extends UserEntity {
 //when i get from firebase and i want to convert it to user model
   factory UserModel.fromFirebase(User user) {
     return UserModel(
-      lastSean: convertToArabicAmPm(DateFormat.Hm().format(DateTime.now())),
+      lastSean: convertToArabicAmPm(timeFormat.format(DateTime.now())),
       id: user.uid,
       email: user.email ?? '',
       name: user.displayName ?? '',

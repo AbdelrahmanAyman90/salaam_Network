@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:halqahquran/core/global/global_widget/error_snakbar.dart';
 import 'package:halqahquran/feature/forget_password/cubit/forget_password_cubit.dart';
-import 'package:halqahquran/feature/forget_password/ui/views/update_password_scree.dart';
+import 'package:halqahquran/feature/forget_password/ui/views/update_password_body.dart';
 import 'package:halqahquran/feature/forget_password/ui/views/verifiy_code_screen.dart';
 
 class VerifyCodeConsummer extends StatelessWidget {
@@ -15,8 +15,7 @@ class VerifyCodeConsummer extends StatelessWidget {
         if (state is PasswordResetVerified) {
           Navigator.push(
             context,
-            MaterialPageRoute(
-                builder: (context) => const UpdatePasswordScreen()),
+            MaterialPageRoute(builder: (context) => const UpdatePasswordBody()),
           );
         } else if (state is PasswordResetError) {
           showCustomSnackBar(context, state.error, Icons.error, false);

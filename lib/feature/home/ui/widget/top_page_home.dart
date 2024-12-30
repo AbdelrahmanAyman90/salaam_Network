@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:halqahquran/core/global/global_function/get_user_data.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
 
@@ -16,16 +17,12 @@ class TopPageHome extends StatelessWidget {
           style: TextAppStyle.subTittel,
         ),
         Text(
-          "Ayman",
+          getUserData().name,
           style: TextAppStyle.normalTittel.copyWith(
               fontSize: 22.sp,
               fontWeight: FontWeight.w500,
               color: AppColor.primeColor),
         ),
-        // Text(
-        //   ' ${DateFormat('yyyy-MM-dd').format(DateTime.now())} ${DateFormat('EEEE').format(DateTime.now())}',
-        //   style: TextAppStyle.subTittel.copyWith(fontSize: 16),
-        // ),
       ],
     );
   }

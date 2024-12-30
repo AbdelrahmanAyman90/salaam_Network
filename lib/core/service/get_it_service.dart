@@ -6,21 +6,31 @@ import 'package:halqahquran/feature/Auth/data/repo/auth_repo_impl.dart';
 import 'package:halqahquran/feature/Auth/domain/repos/auth_repo.dart';
 import 'package:halqahquran/feature/change_password/data/change_password_repo_impl.dart';
 import 'package:halqahquran/feature/change_password/domain/change_password_repo.dart';
+import 'package:halqahquran/feature/chat/data/repo/chat_repo_impl.dart';
+import 'package:halqahquran/feature/chat/domain/repo/chat_repo.dart';
+import 'package:halqahquran/feature/chat/ui/cubit/cubit/chat_cubit.dart';
 import 'package:halqahquran/feature/edit_profile/data/repo/edit_profile_repo_impl.dart';
 import 'package:halqahquran/feature/edit_profile/domain/repos/edit_profile_repo.dart';
 
 final getIt = GetIt.instance;
 void setupServiceLocator() {
+  getIt.registerSingleton<FirebaseService>(
+    FirebaseService(),
+  );
+  getIt.registerSingleton<ChatRepoImpl>(
+    ChatRepoImpl(),
+  );
+
+  getIt.registerSingleton<ChangePasswordRepo>(ChangePasswordRepoImpl());
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImpl(
       firebaseAuth: FirebaseAuthService(),
-      firebaseService: FirebaseService(),
+      firebaseService: getIt<FirebaseService>(),
     ),
   );
   getIt.registerSingleton<EditProfileRepo>(
     EditProfileRepoImpl(
-      firebaseService: FirebaseService(),
+      firebaseService: getIt<FirebaseService>(),
     ),
   );
-  getIt.registerSingleton<ChangePasswordRepo>(ChangePasswordRepoImpl());
 }

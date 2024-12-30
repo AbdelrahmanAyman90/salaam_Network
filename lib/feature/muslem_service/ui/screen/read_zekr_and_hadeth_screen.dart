@@ -17,6 +17,7 @@ class ReadZekrAndHadethScreen extends StatelessWidget {
     return SafeScaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TopPageService(
               tittelOfService: tittel,

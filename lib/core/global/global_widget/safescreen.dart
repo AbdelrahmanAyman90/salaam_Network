@@ -23,7 +23,7 @@ class SafeScaffold extends StatelessWidget {
         child: Scaffold(
           bottomNavigationBar: bottomNavigationBar,
           appBar: appBar,
-          body: Directionality(textDirection: TextDirection.rtl, child: body),
+          body: body,
           floatingActionButton: floatingActionButton,
           drawer: drawer,
         ),

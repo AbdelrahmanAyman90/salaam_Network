@@ -1,13 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:halqahquran/core/global/global_widget/safescreen.dart';
-import 'package:halqahquran/core/service/get_it_service.dart';
+import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/feature/profile/ui/cubit/profile_cubit.dart';
 import 'package:halqahquran/feature/profile/ui/views/profile_consummer.dart';
-import 'package:halqahquran/feature/profile/ui/views/profile_screen_body.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -18,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
       create: (context) => ProfileCubit(),
       child: SafeScaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white.withOpacity(0.1),
+          backgroundColor: AppColor.colorAppBar,
           automaticallyImplyLeading: false,
           title: const Text(
             'حسابي',

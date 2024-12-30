@@ -20,10 +20,7 @@ class EditProfileField extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(
-            title,
-            style: TextAppStyle.normalTittel,
-          ),
+          child: Text(title, style: TextStyles.semiBold18),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),

@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_convert_hour.dart';
 import 'package:halqahquran/core/global/global_function/get_user_data.dart';
+import 'package:halqahquran/core/util/const_varible.dart';
 import 'package:halqahquran/feature/Auth/domain/entity/user_entity.dart';
 import 'package:halqahquran/feature/Auth/domain/repos/auth_repo.dart';
 import 'package:halqahquran/feature/edit_profile/domain/repos/edit_profile_repo.dart';
@@ -40,8 +41,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           emit(UserUpdateSuccses());
           UserEntity user = UserEntity(
               id: getUserData().id,
-              lastSean:
-                  convertToArabicAmPm(DateFormat.Hm().format(DateTime.now())),
+              lastSean: convertToArabicAmPm(timeFormat.format(DateTime.now())),
               name: newName ?? getUserData().name,
               image: newImage ?? getUserData().image,
               email: newEmail ?? currentEmail);

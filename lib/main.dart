@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_get_date.dart';
 import 'package:halqahquran/core/service/api_service.dart';
@@ -9,21 +9,20 @@ import 'package:halqahquran/core/service/bloc_observ.dart';
 import 'package:halqahquran/core/service/get_it_service.dart';
 import 'package:halqahquran/core/service/shard_pref_service.dart';
 import 'package:halqahquran/core/theme/color.dart';
-import 'package:halqahquran/feature/Auth/ui/views/login/login_screen.dart';
-import 'package:halqahquran/feature/chat/ui/cubit/cubit/chat_cubit.dart';
+import 'package:halqahquran/core/theme/theam.dart';
 import 'package:halqahquran/feature/forget_password/cubit/forget_password_cubit.dart';
+import 'package:halqahquran/feature/home/ui/screen/bootom_bar.dart';
 import 'package:halqahquran/feature/notfication/local_notfication_helper.dart';
 import 'package:halqahquran/feature/notfication/workmanager_helper.dart';
-
-import 'package:halqahquran/feature/home/ui/screen/bootom_bar.dart';
 import 'package:halqahquran/feature/pray_time/data/repo/pray_time_repo.dart';
 import 'package:halqahquran/feature/pray_time/ui/cubit/pray_cubit.dart';
-
+import 'package:halqahquran/feature/theam/cubit/theam_cubit.dart';
 import 'package:halqahquran/firebase_options.dart';
+import 'package:halqahquran/generated/l10n.dart';
 
-@pragma('vm:entry-point')
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     name: 'halaqa-quran',
     options: DefaultFirebaseOptions.currentPlatform,
@@ -39,7 +38,7 @@ void main() async {
   setupServiceLocator();
   Bloc.observer = BlocObserverClass();
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -61,21 +60,34 @@ class MyApp extends StatelessWidget {
             )..getPrayTime(getDate(0), 'egypt'),
           ),
           BlocProvider(
-            create: (context) => ChatCubit(),
-          ),
-          BlocProvider(
             create: (context) => ForgetPasswordCubit(),
           ),
-        ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            fontFamily: 'Cairo',
-            colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primeColor),
-            scaffoldBackgroundColor: Colors.white.withOpacity(.95),
+          BlocProvider(
+            create: (context) =>
+                TheamCubit()..loadTheme(), // Load the theme on app startup
           ),
-          home: //const BottomNavBar()
-              LoginView(),
+        ],
+        child: BlocBuilder<TheamCubit, TheamState>(
+          builder: (context, state) {
+            return MaterialApp(
+              locale: const Locale('ar'),
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
+              debugShowCheckedModeBanner: false,
+              themeMode: state is DarkThemeState
+                  ? ThemeMode.dark
+                  : ThemeMode.light, // Use the themeMode from the state
+              theme: AppTheme.lightTheme,
+              darkTheme: AppTheme.darkTheme,
+              home: const BottomNavBar(),
+              //LoginView(),
+            );
+          },
         ),
       ),
     );
@@ -117,4 +129,11 @@ class MyApp extends StatelessWidget {
  * todo forget password page update password(fake)
  * todo logout
  * 
+ */
+
+/**
+ * !dialog logout 
+ * !not chat yet
+ * !add localization arabic
+ * !theam scaffold only 
  */

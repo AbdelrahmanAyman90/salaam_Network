@@ -14,21 +14,18 @@ class TopPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_back_ios_new),
+            ),
             Text(
               nameTittel,
               style: TextAppStyle.arabicStyle
                   .copyWith(color: Colors.black, fontSize: 18.sp),
-            ),
-            Directionality(
-              textDirection: TextDirection.ltr,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(Icons.arrow_back_ios_new),
-              ),
             ),
           ],
         ),

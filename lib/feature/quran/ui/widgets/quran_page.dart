@@ -36,23 +36,19 @@ class _QuranImageScreenState extends State<QuranImageScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Container(
-        color: Colors.white,
-        child: SafeArea(
-          child: Scaffold(
-            body: PageView.builder(
-              controller: _pageController,
-              itemCount: 604, // Adjust if you have fewer pages
-              onPageChanged: _onPageChanged,
-              itemBuilder: (context, index) {
-                return QuranRasterImage(
-                  imagePath:
-                      'assets/images/quran_images_new_2/${index + 1}.png',
-                );
-              },
-            ),
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
+          body: PageView.builder(
+            controller: _pageController,
+            itemCount: 604, // Adjust if you have fewer pages
+            onPageChanged: _onPageChanged,
+            itemBuilder: (context, index) {
+              return QuranRasterImage(
+                imagePath: 'assets/images/quran_images_new_2/${index + 1}.png',
+              );
+            },
           ),
         ),
       ),

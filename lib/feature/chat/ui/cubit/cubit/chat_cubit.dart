@@ -5,21 +5,25 @@ import 'package:halqahquran/core/service/firebase_sevice.dart';
 import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
 import 'package:halqahquran/feature/chat/data/firebase_chat_operation.dart';
 import 'package:halqahquran/feature/chat/data/model/chat_model.dart';
+import 'package:halqahquran/feature/chat/data/repo/chat_repo_impl.dart';
 import 'package:meta/meta.dart';
 
 part 'chat_state.dart';
 
 class ChatCubit extends Cubit<ChatState> {
-  ChatCubit() : super(ChatInitial());
-  FirebaseChatOperation firebaseOperation = FirebaseChatOperation();
-  FirebaseService firebaseService = FirebaseService();
+  ChatCubit({required this.firebaseService, required this.chatRepoImpl})
+      : super(ChatInitial());
+  //FirebaseChatOperation firebaseOperation = FirebaseChatOperation();
+  FirebaseService firebaseService;
+  ChatRepoImpl chatRepoImpl;
+
   List<UserModel> allUserList = [];
   getAllUser() async {
     emit(GetAllUserLoading());
     String id = firebaseService.getFirebaseUserId();
 
     try {
-      var result = await firebaseOperation.getAllUser(id);
+      var result = await chatRepoImpl.getAllUser(id);
       //await firebaseOperation.getUserInfo(idUser: id);
       result.fold((l) {
         log(l.toString());
@@ -41,7 +45,7 @@ class ChatCubit extends Cubit<ChatState> {
     String currentUserId = await firebaseService.getFirebaseUserId();
 
     try {
-      var result = await firebaseOperation.createChat(
+      var result = await chatRepoImpl.createChat(
           currentUserId: currentUserId, otherUserId: otherUserId);
       if (result) {
         emit(CreatNewChatSuccses(massage: "now can chat with  '${OtherName}'"));
@@ -52,6 +56,15 @@ class ChatCubit extends Cubit<ChatState> {
     } on Exception catch (e) {
       log(e.toString());
       emit(GetAllUserFail(errorMassage: e.toString()));
+    }
+  }
+
+  Future<void> deleteUser({required String chatId}) async {
+    bool result = await chatRepoImpl.deletUser(chatId: chatId);
+    if (result) {
+      emit(DeleteUserSuccess());
+    } else {
+      emit(DeleteUserFail());
     }
   }
 

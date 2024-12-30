@@ -106,6 +106,9 @@ class ServerFailuar extends Failure {
         return ServerFailuar('The email address is already in use');
       case 'weak-password':
         return ServerFailuar('The password is too weak');
+      case 'network-request-failed':
+        return ServerFailuar(
+            'Network request failed. Please check your internet connection.');
       case 'operation-not-allowed':
         return ServerFailuar('This operation is not allowed');
       case 'too-many-requests':

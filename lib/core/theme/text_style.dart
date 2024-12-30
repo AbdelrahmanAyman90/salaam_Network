@@ -28,8 +28,10 @@ class TextAppStyle {
 }
 
 abstract class TextStyles {
-  static const TextStyle regular14 =
-      TextStyle(fontSize: FontSize.s14, fontWeight: FontWeightManager.regular);
+  static const TextStyle regular14 = TextStyle(
+    fontSize: FontSize.s14,
+    fontWeight: FontWeightManager.regular,
+  );
 
   static const TextStyle regular16 =
       TextStyle(fontSize: FontSize.s16, fontWeight: FontWeightManager.regular);

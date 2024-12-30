@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class PrayerName {
   final String arabic;
   final String english;
@@ -17,3 +19,6 @@ List<PrayerName> praysName = [
 //const varible
 const kNotficationIsWork = 'notificationIsWork';
 const kUser = 'userData';
+const String themeKey = 'isDarkTheme';
+
+DateFormat timeFormat = DateFormat("HH:mm", 'en');

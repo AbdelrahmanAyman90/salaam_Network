@@ -6,21 +6,18 @@ import 'package:toastification/toastification.dart';
 
 SnackBar showErrorSnackBar(BuildContext context, String message) {
   return SnackBar(
-    content: Directionality(
-      textDirection: TextDirection.rtl,
-      child: Row(
-        children: [
-          Icon(
-            Icons.wifi_off_outlined,
-            color: Colors.white,
-          ),
-          AppSize.width(12),
-          Text(
-            message,
-            style: TextStyle(fontSize: 18.sp),
-          ),
-        ],
-      ),
+    content: Row(
+      children: [
+        const Icon(
+          Icons.wifi_off_outlined,
+          color: Colors.white,
+        ),
+        AppSize.width(12),
+        Text(
+          message,
+          style: TextStyle(fontSize: 18.sp),
+        ),
+      ],
     ),
     behavior: SnackBarBehavior.floating,
   );
@@ -39,7 +36,6 @@ void showCustomSnackBar(
         ),
       ),
       alignment: Alignment.bottomCenter,
-      direction: TextDirection.rtl,
       animationDuration: const Duration(milliseconds: 300),
       icon: Icon(icon, color: isSuccess ? Colors.green : Colors.red),
       showIcon: true, // Show or hide the icon
@@ -62,12 +58,9 @@ void showCustomSnackBar(
 
 SnackBar showSuccsesSnackBar(BuildContext context, String message) {
   return SnackBar(
-    content: Directionality(
-      textDirection: TextDirection.rtl,
-      child: Text(
-        message,
-        style: TextStyle(fontSize: 18.sp),
-      ),
+    content: Text(
+      message,
+      style: TextStyle(fontSize: 18.sp),
     ),
   );
 }

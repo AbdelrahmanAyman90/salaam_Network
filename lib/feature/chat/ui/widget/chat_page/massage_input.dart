@@ -1,12 +1,13 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:halqahquran/core/util/const_varible.dart';
+import 'package:halqahquran/feature/chat/data/repo/chat_repo_impl.dart';
 import 'package:path/path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_convert_hour.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
-import 'package:halqahquran/feature/chat/data/firebase_chat_operation.dart';
 import 'package:halqahquran/feature/chat/data/model/massage_model.dart';
 import 'package:intl/intl.dart';
 import 'package:image_picker/image_picker.dart';
@@ -178,20 +179,20 @@ class _MessageInputWidgetState extends State<MessageInputWidget> {
       required String content,
       required String senderId,
       required String type}) async {
-    FirebaseChatOperation f = FirebaseChatOperation();
+    ChatRepoImpl chatFirebaseOperation = ChatRepoImpl();
 
     MessageModel newMessage = MessageModel(
-      senderId: senderId,
-      messageText: content,
-      timestamp: DateTime.now().microsecondsSinceEpoch,
-      isRead: false,
-      type: type,
-      timeSendMassage:
-          convertToArabicAmPm(DateFormat.Hm().format(DateTime.now())),
-    );
+        senderId: senderId,
+        messageText: content,
+        timestamp: DateTime.now().microsecondsSinceEpoch,
+        isRead: false,
+        type: type,
+        timeSendMassage:
+            convertToArabicAmPm(timeFormat.format(DateTime.now())));
 
     try {
-      await f.sendMessage(chatId: chatIdd, message: newMessage);
+      await chatFirebaseOperation.sendMessage(
+          chatId: chatIdd, message: newMessage);
     } catch (e) {
       print("Error sending message: $e");
     }
