@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/feature/Auth/ui/widget/custom_text_field.dart';
 import 'package:halqahquran/feature/Auth/ui/widget/custtom_button.dart';
+import 'package:halqahquran/feature/stream/ui/cubit/stream_cubit_cubit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
@@ -36,7 +38,7 @@ class _BottomSheetStreamState extends State<BottomSheetStream> {
     }
   }
 
-  void validateAndStartStream() {
+  Future<void> validateAndStartStream() async {
     if (formKey.currentState!.validate()) {
       if (selectedImage == null) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -47,6 +49,10 @@ class _BottomSheetStreamState extends State<BottomSheetStream> {
       // Proceed to start the stream
       print('Starting stream with title: ${titelStreamController.text}');
       print('Image path: ${selectedImage!.path}');
+      await context.read<StreamCubit>().createStream(
+            streamName: titelStreamController.text,
+            streamImage: selectedImage!.path,
+          );
     }
   }
 

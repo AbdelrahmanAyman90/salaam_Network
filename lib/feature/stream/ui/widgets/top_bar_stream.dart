@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
+import 'package:halqahquran/feature/stream/ui/cubit/stream_cubit_cubit.dart';
 import 'package:halqahquran/feature/stream/ui/widgets/bottom_sheet_stream.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
@@ -25,7 +27,10 @@ class TopBarStream extends StatelessWidget {
                 pageListBuilder: (modalSheetContext) {
                   return [
                     WoltModalSheetPage(
-                      child: const BottomSheetStream(),
+                      child: BlocProvider.value(
+                        value: context.read<StreamCubit>(),
+                        child: const BottomSheetStream(),
+                      ),
                     ),
                   ];
                 },

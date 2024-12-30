@@ -24,9 +24,10 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<void> addUser({required UserEntity userEntity}) async {
     await firebaseService.setData(
-        collection: 'user_info',
-        data: UserModel.fromUserEntity(userEntity).toMap(),
-        documentId: userEntity.id);
+      collection: 'user_info',
+      data: UserModel.fromUserEntity(userEntity).toMap(),
+      documentId: userEntity.id,
+    );
   }
 
   @override

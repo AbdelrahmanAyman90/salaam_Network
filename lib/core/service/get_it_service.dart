@@ -11,6 +11,8 @@ import 'package:halqahquran/feature/chat/domain/repo/chat_repo.dart';
 import 'package:halqahquran/feature/chat/ui/cubit/cubit/chat_cubit.dart';
 import 'package:halqahquran/feature/edit_profile/data/repo/edit_profile_repo_impl.dart';
 import 'package:halqahquran/feature/edit_profile/domain/repos/edit_profile_repo.dart';
+import 'package:halqahquran/feature/stream/data/repos/stream_repo_impl.dart';
+import 'package:halqahquran/feature/stream/domain/repos/stream_repo.dart';
 
 final getIt = GetIt.instance;
 void setupServiceLocator() {
@@ -30,6 +32,11 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<EditProfileRepo>(
     EditProfileRepoImpl(
+      firebaseService: getIt<FirebaseService>(),
+    ),
+  );
+  getIt.registerSingleton<StreamRepo>(
+    StreamRepoImpl(
       firebaseService: getIt<FirebaseService>(),
     ),
   );
