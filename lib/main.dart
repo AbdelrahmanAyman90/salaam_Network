@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_get_date.dart';
+import 'package:halqahquran/core/global/global_function/init_app.dart';
 import 'package:halqahquran/core/routes/routes_manager.dart';
 import 'package:halqahquran/core/service/api_service.dart';
 import 'package:halqahquran/core/service/bloc_observ.dart';
@@ -29,18 +30,13 @@ import 'package:halqahquran/start_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
-  await Firebase.initializeApp(
-    name: 'halaqa-quran',
-    options: DefaultFirebaseOptions.currentPlatform,
-  ).then((e) async {
-    await SharedPrefService.init();
-    setupServiceLocator();
-    Bloc.observer = BlocObserverClass();
-  });
-
+  await initApp();
   runApp(const StartApp());
 }
+
+
+
+
 
 /**
  * undrstand timer in pray 

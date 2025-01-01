@@ -1,31 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:halqahquran/core/routes/argumnt_class.dart';
-import 'package:halqahquran/core/service/get_it_service.dart';
-import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
-import 'package:halqahquran/feature/Auth/domain/repos/auth_repo.dart';
-import 'package:halqahquran/feature/Auth/ui/cubit/login/login_cubit.dart';
-import 'package:halqahquran/feature/Auth/ui/cubit/register/register_cubit.dart';
-import 'package:halqahquran/feature/Auth/ui/cubit/social_auth/social_auth_cubit.dart';
-import 'package:halqahquran/feature/Auth/ui/views/login/login_screen.dart';
-import 'package:halqahquran/feature/Auth/ui/views/register/register_screen.dart';
-import 'package:halqahquran/feature/change_password/ui/view/change_password_body.dart';
-import 'package:halqahquran/feature/change_password/ui/view/change_password_scree.dart';
-import 'package:halqahquran/feature/chat/ui/screen/chat_page.dart';
-import 'package:halqahquran/feature/edit_profile/ui/screen/edit_profile_screen.dart';
-import 'package:halqahquran/feature/forget_password/cubit/forget_password_cubit.dart';
-import 'package:halqahquran/feature/forget_password/ui/views/forget_password_screen.dart';
-import 'package:halqahquran/feature/forget_password/ui/views/update_password/update_password_screen.dart';
-import 'package:halqahquran/feature/forget_password/ui/views/verifiy_code/verify_code_screen.dart';
-import 'package:halqahquran/feature/forget_password/ui/views/write_phone/write_phone_screen.dart';
-import 'package:halqahquran/feature/home/ui/screen/bootom_bar.dart';
-import 'package:halqahquran/feature/muslem_service/ui/screen/zekr_screen.dart';
-import 'package:halqahquran/feature/quran/ui/screen/audio_player_screen.dart';
-import 'package:halqahquran/feature/quran/ui/screen/reder_name_screen.dart';
-import 'package:halqahquran/feature/quran/ui/widgets/quran_page.dart';
-import 'package:halqahquran/feature/stream/data/model/stream_model.dart';
-import 'package:halqahquran/feature/stream/ui/views/audience_stream_page.dart';
-import 'package:halqahquran/feature/stream/ui/views/host_stream_page.dart';
+part of 'route_import.dart';
 
 Route<dynamic> ongenerateRoute(RouteSettings settings) {
   WidgetBuilder builder;
@@ -103,8 +76,8 @@ Route<dynamic> ongenerateRoute(RouteSettings settings) {
           );
       break;
     //home
-    case HomeScreen.routeName:
-      builder = (context) => const HomeScreen();
+    case HomeView.routeName:
+      builder = (context) => const HomeView();
       break;
     //massages
     case MassagesScreen.routeName:
@@ -138,8 +111,8 @@ Route<dynamic> ongenerateRoute(RouteSettings settings) {
           );
       break;
     //edit profile
-    case EditProfileScreen.routeName:
-      builder = (context) => const EditProfileScreen();
+    case EditProfileView.routeName:
+      builder = (context) => const EditProfileView();
     //change password
     case ChangePasswordScreen.routeName:
       builder = (context) => const ChangePasswordScreen();

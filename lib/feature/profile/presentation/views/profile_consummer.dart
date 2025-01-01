@@ -3,9 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:halqahquran/core/status/custom_snackbar.dart';
 import 'package:halqahquran/core/status/error_snakbar.dart';
-import 'package:halqahquran/feature/Auth/ui/views/login/login_screen.dart';
-import 'package:halqahquran/feature/profile/ui/cubit/profile_cubit.dart';
-import 'package:halqahquran/feature/profile/ui/views/profile_screen_body.dart';
+import 'package:halqahquran/feature/Auth/presentation/views/login/login_view.dart';
+import 'package:halqahquran/feature/profile/presentation/cubit/profile_cubit.dart';
+import 'package:halqahquran/feature/profile/presentation/views/profile_screen_body.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class ProfileConsummer extends StatelessWidget {
@@ -16,14 +16,8 @@ class ProfileConsummer extends StatelessWidget {
     return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {
         if (state is LogoutSuccess) {
-          // Navigator.pushAndRemoveUntil(
-          //     context,
-          //     MaterialPageRoute(
-          //       builder: (context) => const LoginView(),
-          //     ),
-          //     (route) => false);
-
-          Navigator.pushReplacementNamed(context, LoginView.routeName);
+          Navigator.pushAndRemoveUntil(
+              context, LoginView.routeName, (route) => false);
         } else if (state is LogoutError) {
           showCustomSnackBar(context, state.errorMassage, Icons.error, false);
         }

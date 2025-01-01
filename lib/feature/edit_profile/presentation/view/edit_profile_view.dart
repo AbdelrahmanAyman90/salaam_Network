@@ -5,13 +5,13 @@ import 'package:halqahquran/core/service/get_it_service.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/feature/Auth/domain/repos/auth_repo.dart';
 import 'package:halqahquran/feature/edit_profile/domain/repos/edit_profile_repo.dart';
-import 'package:halqahquran/feature/edit_profile/ui/cubit/edit_profile_cubit.dart';
-import 'package:halqahquran/feature/edit_profile/ui/screen/edit_profile_body.dart';
-import 'package:halqahquran/feature/edit_profile/ui/screen/edit_profile_screen_consummer.dart';
+import 'package:halqahquran/feature/edit_profile/presentation/cubit/edit_profile_cubit.dart';
+import 'package:halqahquran/feature/edit_profile/presentation/view/edit_profile_body.dart';
+import 'package:halqahquran/feature/edit_profile/presentation/view/edit_profile_screen_consummer.dart';
 import 'package:halqahquran/generated/l10n.dart';
 
-class EditProfileScreen extends StatelessWidget {
-  const EditProfileScreen({super.key});
+class EditProfileView extends StatelessWidget {
+  const EditProfileView({super.key});
   static const routeName = 'EditProfileScreen';
   @override
   Widget build(BuildContext context) {
