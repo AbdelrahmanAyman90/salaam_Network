@@ -25,7 +25,7 @@ class PrayCard extends StatelessWidget {
     var cubit = context.read<PrayCubit>();
     log("qqqqqqqqqqqqqqqqqqqqqqqqqqq");
 
-    log(cubit.dateOfNextPray!.entries.first.key.toString());
+    // log(cubit.dateOfNextPray!.entries.first.key.toString());
     log(index.toString());
     log(getDate(0));
     log(cubit.currentDate.toString());

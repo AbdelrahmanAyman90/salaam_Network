@@ -3,7 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:halqahquran/core/routes/argumnt_class.dart';
 import 'package:halqahquran/core/service/firebase_sevice.dart';
+import 'package:halqahquran/core/status/chat_shummer.dart';
+import 'package:halqahquran/core/util/asset_app.dart';
 import 'package:halqahquran/feature/chat/data/model/chat_model.dart';
 import 'package:halqahquran/feature/chat/data/repo/chat_repo_impl.dart';
 import 'package:halqahquran/feature/chat/ui/screen/chat_page.dart';
@@ -38,7 +41,10 @@ class ChatUsersList extends StatelessWidget {
         stream: firebaseChatOperation.getUserChats(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return ListView.builder(
+              itemCount: 6,
+              itemBuilder: (context, index) => const ChatShimmerWidget(),
+            );
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -47,7 +53,7 @@ class ChatUsersList extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset(
-                    'assets/images/empty.svg',
+                    AssetApp.emptySvg,
                     width: 150.w,
                     height: 150.h,
                   ),
@@ -89,20 +95,28 @@ class ChatUsersList extends StatelessWidget {
                   },
                   //! preesd
                   onTap: () async {
-                    Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.rightToLeft,
-                        duration: const Duration(milliseconds: 400),
-                        child: MassagesScreen(
+                    // Navigator.push(
+                    //   context,
+                    //   PageTransition(
+                    //     type: PageTransitionType.rightToLeft,
+                    //     duration: const Duration(milliseconds: 400),
+                    //     child: MassagesScreen(
+                    //       chatId: userChats[index].chatId,
+                    //       userDate: userChats[index].currentUser.id ==
+                    //               firebaseService.getFirebaseUserId()
+                    //           ? userChats[index].otherUser
+                    //           : userChats[index].currentUser,
+                    //     ),
+                    //   ),
+                    // );
+                    Navigator.pushNamed(context, MassagesScreen.routeName,
+                        arguments: MessagesScreenArguments(
                           chatId: userChats[index].chatId,
-                          userDate: userChats[index].currentUser.id ==
+                          userData: userChats[index].currentUser.id ==
                                   firebaseService.getFirebaseUserId()
                               ? userChats[index].otherUser
                               : userChats[index].currentUser,
-                        ),
-                      ),
-                    );
+                        ));
                   },
                   child: ChatUserWidget(
                     userChats: userChats[index],

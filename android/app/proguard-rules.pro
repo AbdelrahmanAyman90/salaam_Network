@@ -1,0 +1,1 @@
+-Keep class **.zego.**{*; }

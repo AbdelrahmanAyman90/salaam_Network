@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_function/check_internet.dart';
 import 'package:halqahquran/core/global/global_function/convert_englishnum_to_arabic.dart';
-import 'package:halqahquran/core/global/global_widget/show_toats.dart';
+import 'package:halqahquran/core/routes/argumnt_class.dart';
+import 'package:halqahquran/core/status/show_toats.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/feature/quran/ui/quran_cubit.dart/cubit/quran_cubit.dart';
@@ -41,17 +42,22 @@ class SorahInfoWidget extends StatelessWidget {
         ),
         child: GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              PageTransition(
-                type: PageTransitionType.rightToLeft,
-                duration: const Duration(milliseconds: 400),
-                child: QuranImageScreen(
+            // Navigator.push(
+            //   context,
+            //   PageTransition(
+            //     type: PageTransitionType.rightToLeft,
+            //     duration: const Duration(milliseconds: 400),
+            //     child: QuranImageScreen(
+            //       numberPage:
+            //           context.read<QuranCubit>().quranDataList[index].initPage!,
+            //     ),
+            //   ),
+            // );
+            Navigator.pushNamed(context, QuranImageScreen.routeName,
+                arguments: QuranImageScreenArgumnt(
                   numberPage:
                       context.read<QuranCubit>().quranDataList[index].initPage!,
-                ),
-              ),
-            );
+                ));
           },
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
@@ -91,15 +97,25 @@ class SorahInfoWidget extends StatelessWidget {
                 InkWell(
                   onTap: () async {
                     await checkInternetConnection()
-                        ? Navigator.push(
+                        ?
+                        //  Navigator.push(
+                        //     context,
+                        //     PageTransition(
+                        //       type: PageTransitionType.rightToLeft,
+                        //       duration: const Duration(milliseconds: 400),
+                        //       child: RederNameScreen(
+                        //         indexSurah: index,
+                        //         surahName: nameArabic,
+                        //       ),
+                        //     ),
+                        //   )
+
+                        Navigator.pushNamed(
                             context,
-                            PageTransition(
-                              type: PageTransitionType.rightToLeft,
-                              duration: const Duration(milliseconds: 400),
-                              child: RederNameScreen(
-                                indexSurah: index,
-                                surahName: nameArabic,
-                              ),
+                            RederNameScreen.routeName,
+                            arguments: RederNameScreenArgument(
+                              indexSurah: index,
+                              surahName: nameArabic,
                             ),
                           )
                         : showToats("تاكد من الاتصال بالانترنت ثم اعد الضغط");

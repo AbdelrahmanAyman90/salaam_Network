@@ -2,7 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:halqahquran/core/global/global_widget/show_toats.dart';
+import 'package:halqahquran/core/routes/argumnt_class.dart';
+import 'package:halqahquran/core/status/show_toats.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/feature/quran/ui/screen/audio_player_screen.dart';
 import 'package:halqahquran/feature/quran/ui/screen/reder_name_screen.dart';
@@ -30,17 +31,23 @@ class RedarNameWedgit extends StatelessWidget {
       child: InkWell(
         onTap: () {
           checkIfFound(indexOfSurah.toString(), listOfSurahs)
-              ? Navigator.push(
-                  context,
-                  PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    duration: const Duration(milliseconds: 400),
-                    child: AudioPlayScreen(
+              ?
+              // Navigator.push(
+              //     context,
+              //     PageTransition(
+              //       type: PageTransitionType.rightToLeft,
+              //       duration: const Duration(milliseconds: 400),
+              //       child: AudioPlayScreen(
+              //         nameSorah: nameSurah,
+              //         linkAudio: link,
+              //         rederName: nameReder,
+              //       ),
+              //     ))
+              Navigator.pushNamed(context, AudioPlayScreen.routeName,
+                  arguments: AudioPlayScreenArgumnt(
                       nameSorah: nameSurah,
                       linkAudio: link,
-                      rederName: nameReder,
-                    ),
-                  ))
+                      rederName: nameReder))
               : showToats("لم تتم اضافه ${nameSurah} حتى الان");
         },
         child: Container(

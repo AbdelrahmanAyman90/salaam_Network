@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:halqahquran/core/global/global_widget/error_snakbar.dart';
+import 'package:halqahquran/core/status/custom_snackbar.dart';
+import 'package:halqahquran/core/status/error_snakbar.dart';
+import 'package:halqahquran/core/util/app_pref.dart';
 import 'package:halqahquran/feature/Auth/ui/cubit/social_auth/social_auth_cubit.dart';
 import 'package:halqahquran/feature/Auth/ui/cubit/login/login_cubit.dart';
 import 'package:halqahquran/feature/Auth/ui/views/login/login_view_body.dart';
@@ -18,16 +20,8 @@ class LoginViewConsumer extends StatelessWidget {
           BlocListener<LoginCubit, LoginState>(
             listener: (context, state) {
               if (state is LoginSuccess) {
-                // showCustomSnackBar(context, "login authentication successful!",
-                //     Icons.done, true);
-                Navigator.push(
-                  context,
-                  PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    duration: const Duration(milliseconds: 400),
-                    child: const BottomNavBar(),
-                  ),
-                );
+                Navigator.pushNamedAndRemoveUntil(
+                    context, HomeScreen.routeName, (route) => false);
               } else if (state is LoginError) {
                 showCustomSnackBar(context, state.message, Icons.error, false);
               }
@@ -36,17 +30,16 @@ class LoginViewConsumer extends StatelessWidget {
           BlocListener<SocialAuthCubit, SocialAuthState>(
             listener: (context, state) {
               if (state is SocialAuthSucsses) {
-                // showCustomSnackBar(context, "Social authentication successful!",
-                //     Icons.done, true);
-                // Uncomment and use navigation if required
-                Navigator.push(
-                  context,
-                  PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    duration: const Duration(milliseconds: 400),
-                    child: const BottomNavBar(),
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   PageTransition(
+                //     type: PageTransitionType.rightToLeft,
+                //     duration: const Duration(milliseconds: 400),
+                //     child: const BottomNavBar(),
+                //   ),
+                // );
+                Navigator.pushNamedAndRemoveUntil(
+                    context, HomeScreen.routeName, (route) => false);
               } else if (state is SocialAuthError) {
                 showCustomSnackBar(
                     context, state.errorMassage, Icons.error, false);

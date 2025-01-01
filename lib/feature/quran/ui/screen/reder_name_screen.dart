@@ -14,7 +14,7 @@ class RederNameScreen extends StatelessWidget {
   final String surahName;
   const RederNameScreen(
       {super.key, required this.indexSurah, required this.surahName});
-
+  static const String routeName = "redernamescreen";
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

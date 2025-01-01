@@ -16,9 +16,4 @@ List<PrayerName> praysName = [
   PrayerName(arabic: "صلاه العشاء", english: "Isha"),
 ];
 
-//const varible
-const kNotficationIsWork = 'notificationIsWork';
-const kUser = 'userData';
-const String themeKey = 'isDarkTheme';
-
 DateFormat timeFormat = DateFormat("HH:mm", 'en');

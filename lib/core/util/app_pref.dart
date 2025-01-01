@@ -1,5 +1,9 @@
-import 'package:halqahquran/core/util/const_varible.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+const String kNotficationIsWork = 'notificationIsWork';
+const String kUser = 'userData';
+const String themeKey = 'isDarkTheme';
+const String kuserIsLogin = 'isLogin';
 
 class SharedPrefService {
   static late SharedPreferences _instance;
@@ -8,8 +12,8 @@ class SharedPrefService {
     _instance = await SharedPreferences.getInstance();
   }
 
-  static setBool(String key, bool value) {
-    _instance.setBool(key, value);
+  static Future<bool> setBool(String key, bool value) async {
+    return await _instance.setBool(key, value);
   }
 
   static bool getBool(String key) {

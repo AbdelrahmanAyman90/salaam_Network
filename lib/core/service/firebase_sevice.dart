@@ -19,16 +19,6 @@ class FirebaseService {
     }
   }
 
-//
-  // Future<void> addData(
-  //     {required String collection, required Map<String, dynamic> data}) async {
-  //   try {
-  //     await _firestore.collection(collection).add(data);
-  //   } catch (e) {
-  //     throw Exception('Error setting data: $e');
-  //   }
-  // }
-
   // Get Document Data
   Future<DocumentSnapshot> getData(
       {required String collection, required String documentId}) async {

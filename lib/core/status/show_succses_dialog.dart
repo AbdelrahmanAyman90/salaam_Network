@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:halqahquran/core/util/asset_app.dart';
 
 void showSuccessDialog(
     {required BuildContext context, required void Function()? onPressed}) {
@@ -11,7 +12,7 @@ void showSuccessDialog(
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.asset(
-              'assets/images/succses.svg', // Ensure this path is correct.
+              AssetApp.succsesSvg, // Ensure this path is correct.
               height: 100,
               width: 100,
             ),

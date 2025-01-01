@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 import 'package:halqahquran/core/theme/color.dart';
+import 'package:halqahquran/core/util/json_const.dart';
 import 'package:halqahquran/feature/Auth/ui/views/login/login_screen.dart';
 import 'package:halqahquran/feature/home/data/model/servise_model.dart';
 import 'package:halqahquran/feature/muslem_service/data/model/azkar_model.dart';
@@ -135,8 +136,7 @@ class MuslumServiceCubit extends Cubit<AzkarState> {
   getAzkar(int index) async {
     azkarList.clear();
     try {
-      final String response =
-          await rootBundle.loadString('assets/json/azkar.json');
+      final String response = await rootBundle.loadString(AppJson.azkarJson);
       final data = await json.decode(response);
 
       for (var i in data) {
@@ -158,8 +158,7 @@ class MuslumServiceCubit extends Cubit<AzkarState> {
   getDuaQurans(int index) async {
     duaQuranList.clear();
     try {
-      final String response =
-          await rootBundle.loadString('assets/json/dua_quran.json');
+      final String response = await rootBundle.loadString(AppJson.duaquranJson);
       final data = await json.decode(response);
 
       for (var i in data) {
@@ -181,8 +180,7 @@ class MuslumServiceCubit extends Cubit<AzkarState> {
   getDuaNapi(int index) async {
     duaQuranList.clear();
     try {
-      final String response =
-          await rootBundle.loadString('assets/json/dua_napi.json');
+      final String response = await rootBundle.loadString(AppJson.duaNapiJson);
       final data = await json.decode(response);
 
       for (var i in data) {
@@ -205,7 +203,7 @@ class MuslumServiceCubit extends Cubit<AzkarState> {
     duaQuranList.clear();
     try {
       final String response =
-          await rootBundle.loadString('assets/json/dua_mohmed.json');
+          await rootBundle.loadString(AppJson.duaMohamedJson);
       final data = await json.decode(response);
 
       for (var i in data) {
@@ -227,8 +225,7 @@ class MuslumServiceCubit extends Cubit<AzkarState> {
   getHadeht(int index) async {
     hadehtList.clear();
     try {
-      final String response =
-          await rootBundle.loadString('assets/json/hadeth40.json');
+      final String response = await rootBundle.loadString(AppJson.hadeth40Json);
       final data = await json.decode(response);
 
       for (var i in data) {

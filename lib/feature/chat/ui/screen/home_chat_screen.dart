@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:halqahquran/core/status/circuler_image_shimmer.dart';
 import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
 import 'package:halqahquran/feature/chat/data/repo/chat_repo_impl.dart';
 
@@ -41,9 +42,15 @@ class _HomeChatScreenBodyState extends State<HomeChatScreenBody> {
                   stream: chatOperation.getActiveUsers(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Container();
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 6, // Number of shimmer placeholders
+                        itemBuilder: (context, index) =>
+                            const ShimmerCirculerImage(),
+                      );
                     } else if (snapshot.hasError) {
                       log(snapshot.error.toString());
+
                       return Text("Error: ${snapshot.error}");
                     } else {}
                     return ListView.builder(

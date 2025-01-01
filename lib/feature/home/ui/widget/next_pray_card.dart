@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
+import 'package:halqahquran/core/util/asset_app.dart';
 import 'package:halqahquran/feature/home/ui/widget/nextprayname_widget.dart';
 import 'package:halqahquran/feature/home/ui/widget/remintime_for_pray.dart';
 import 'package:halqahquran/core/util/screen_util.dart';
@@ -44,7 +45,7 @@ class NextPrayCard extends StatelessWidget {
                 ],
               ),
               Image.asset(
-                "assets/images/prophet.png",
+                AssetApp.massgedImage,
                 width: 100,
               ),
             ],

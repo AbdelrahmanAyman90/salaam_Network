@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:halqahquran/core/global/global_function/upload_image.dart';
+import 'package:halqahquran/core/service/upload_image_service.dart';
 import 'package:halqahquran/feature/Auth/domain/repos/auth_repo.dart';
 import 'package:meta/meta.dart';
 

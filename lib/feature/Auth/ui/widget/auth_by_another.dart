@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:halqahquran/core/theme/size.dart';
+import 'package:halqahquran/core/util/asset_app.dart';
 import 'package:halqahquran/feature/Auth/ui/cubit/social_auth/social_auth_cubit.dart';
 
 class AuthByAnotherWidget extends StatelessWidget {
@@ -17,7 +18,7 @@ class AuthByAnotherWidget extends StatelessWidget {
             context.read<SocialAuthCubit>().signUseGoogal();
           },
           child: SvgPicture.asset(
-            "assets/images/googal.svg",
+            AssetApp.googalSvg,
             height: 40,
           ),
         ),
@@ -33,7 +34,7 @@ class AuthByAnotherWidget extends StatelessWidget {
             context.read<SocialAuthCubit>().signUseFacebook();
           },
           child: SvgPicture.asset(
-            "assets/images/face.svg",
+            AssetApp.faceBookSvg,
             height: 40,
           ),
         )

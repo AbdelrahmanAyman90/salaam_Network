@@ -10,7 +10,7 @@ import 'package:halqahquran/feature/change_password/ui/view/change_password_cons
 
 class ChangePasswordScreen extends StatelessWidget {
   const ChangePasswordScreen({super.key});
-
+  static const routeName = 'ChangePasswordScreen';
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

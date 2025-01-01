@@ -18,3 +18,11 @@ final class CreateStreamError extends StreamCubitState {
 
   CreateStreamError({required this.errorMessage});
 }
+
+final class EndStreamError extends StreamCubitState {
+  final String errorMessage;
+
+  EndStreamError({required this.errorMessage});
+}
+
+final class EndStreamSuccess extends StreamCubitState {}

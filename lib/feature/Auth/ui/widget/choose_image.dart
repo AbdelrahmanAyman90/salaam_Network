@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:halqahquran/core/status/circuler_image_shimmer.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -55,7 +57,7 @@ class ImagePickerWidget extends StatelessWidget {
                     radius: 67,
                     backgroundImage: selectedImage != null
                         ? FileImage(selectedImage!)
-                        : NetworkImage(
+                        : CachedNetworkImageProvider(
                             imageName,
                           ) as ImageProvider,
                   ),

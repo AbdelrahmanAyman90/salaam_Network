@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_convert_string_to_timeofday.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_get_date.dart';
 import 'package:halqahquran/core/service/api_service.dart';
-import 'package:halqahquran/core/service/shard_pref_service.dart';
+import 'package:halqahquran/core/util/app_pref.dart';
 import 'package:halqahquran/core/util/const_varible.dart';
 import 'package:halqahquran/feature/notfication/local_notfication_helper.dart';
 import 'package:halqahquran/feature/pray_time/data/repo/pray_time_repo.dart';

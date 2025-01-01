@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:arabic_font/arabic_font.dart';
 import 'package:flutter/material.dart';
+import 'package:halqahquran/core/routes/argumnt_class.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/feature/muslem_service/data/model/azkar_model.dart';
@@ -34,17 +35,22 @@ class SingelIteamServiceWidget extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  PageTransition(
-                      type: PageTransitionType.rightToLeft,
-                      duration: const Duration(milliseconds: 800),
-                      child: ZekrScreen(
+                // Navigator.push(
+                //   context,
+                //   PageTransition(
+                //       type: PageTransitionType.rightToLeft,
+                //       duration: const Duration(milliseconds: 800),
+                //       child: ZekrScreen(
+                //         tittel: iteamData.tittel,
+                //         iteamListData: iteamData.data!,
+                //       ),
+                //       isIos: true),
+                // );
+
+                Navigator.pushNamed(context, ZekrScreen.routeName,
+                    arguments: ZekrScreenArguments(
                         tittel: iteamData.tittel,
-                        iteamListData: iteamData.data!,
-                      ),
-                      isIos: true),
-                );
+                        iteamListData: iteamData.data!));
               },
               icon: const Icon(
                 Icons.arrow_forward_ios,

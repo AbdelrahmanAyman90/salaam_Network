@@ -1,7 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:halqahquran/core/global/global_widget/error_snakbar.dart';
+import 'package:halqahquran/core/status/custom_snackbar.dart';
+import 'package:halqahquran/core/status/error_snakbar.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/feature/Auth/ui/cubit/login/login_cubit.dart';
@@ -102,14 +103,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                             alignment: Alignment.topRight,
                             child: TextButton(
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  PageTransition(
-                                    type: PageTransitionType.rightToLeft,
-                                    duration: const Duration(milliseconds: 400),
-                                    child: const ForgetPasswordScreen(),
-                                  ),
-                                );
+                                Navigator.pushNamed(
+                                    context, ForgetPasswordScreen.routeName);
                               },
                               child: const Text(
                                 "نسيت كلمة المرور؟",
@@ -132,16 +127,18 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                           IsHaveAccount(
                             msg: "ليس لديك حساب ؟",
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                PageTransition(
-                                    type: PageTransitionType.rightToLeft,
-                                    duration:
-                                        const Duration(milliseconds: 1000),
-                                    child: const RegisterView(),
-                                    childCurrent: const LoginView(),
-                                    isIos: true),
-                              );
+                              // Navigator.push(
+                              //   context,
+                              //   PageTransition(
+                              //       type: PageTransitionType.rightToLeft,
+                              //       duration:
+                              //           const Duration(milliseconds: 1000),
+                              //       child: const RegisterView(),
+                              //       childCurrent: const LoginView(),
+                              //       isIos: true),
+                              // );
+                              Navigator.pushNamed(
+                                  context, RegisterView.routeName);
                             },
                             msgAfter: " انشئ حساب الان !",
                           ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_function/check_internet.dart';
-import 'package:halqahquran/core/global/global_widget/show_toats.dart';
+import 'package:halqahquran/core/status/show_toats.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
 import 'package:halqahquran/core/util/screen_util.dart';
 import 'package:page_transition/page_transition.dart';

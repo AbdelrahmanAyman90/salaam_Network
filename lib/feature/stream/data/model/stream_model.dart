@@ -2,6 +2,7 @@ class StreamModel {
   String streamId;
   String streamName;
   String streamImage;
+  String imageBeforUpload;
   String hostUserName;
   String? hostUserImage;
   String userId;
@@ -10,10 +11,11 @@ class StreamModel {
       required this.streamName,
       required this.streamImage,
       required this.hostUserName,
+      required this.imageBeforUpload,
       this.hostUserImage,
       required this.userId});
 
-  factory StreamModel.fromJson(Map<String, dynamic> json) {
+  factory StreamModel.fromDocument(Map<String, dynamic> json) {
     return StreamModel(
       streamId: json['streamId'],
       streamName: json['streamName'],
@@ -21,6 +23,7 @@ class StreamModel {
       hostUserName: json['hostUserName'],
       hostUserImage: json['hostUserImage'],
       userId: json['userId'],
+      imageBeforUpload: json['imageBeforUpload'],
     );
   }
   Map<String, dynamic> toMap() {
@@ -30,7 +33,8 @@ class StreamModel {
       'streamImage': streamImage,
       'hostUserName': hostUserName,
       'hostUserImage': hostUserImage,
-      'userId': userId
+      'userId': userId,
+      'imageBeforUpload': imageBeforUpload
     };
   }
 }

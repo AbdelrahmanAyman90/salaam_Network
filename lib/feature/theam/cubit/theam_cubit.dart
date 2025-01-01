@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:halqahquran/core/service/shard_pref_service.dart';
+import 'package:halqahquran/core/util/app_pref.dart';
 import 'package:halqahquran/core/util/const_varible.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';

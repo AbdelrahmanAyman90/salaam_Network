@@ -41,14 +41,15 @@ class ChangePasswordBody extends StatelessWidget {
             alignment: Alignment.topRight,
             child: TextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    duration: const Duration(milliseconds: 400),
-                    child: const ForgetPasswordScreen(),
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   PageTransition(
+                //     type: PageTransitionType.rightToLeft,
+                //     duration: const Duration(milliseconds: 400),
+                //     child: const ForgetPasswordScreen(),
+                //   ),
+                // );
+                Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
               },
               child: const Text(
                 "نسيت كلمة المرور؟",

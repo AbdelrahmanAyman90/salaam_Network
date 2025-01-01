@@ -9,14 +9,14 @@ import 'package:halqahquran/feature/forget_password/cubit/forget_password_cubit.
 import 'dart:async';
 import 'package:pinput/pinput.dart';
 
-class VerifyCodePage extends StatefulWidget {
-  const VerifyCodePage({Key? key}) : super(key: key);
+class VerifyCodeScreenBody extends StatefulWidget {
+  const VerifyCodeScreenBody({Key? key}) : super(key: key);
 
   @override
-  State<VerifyCodePage> createState() => _VerifyCodePageState();
+  State<VerifyCodeScreenBody> createState() => _VerifyCodeScreenBodyState();
 }
 
-class _VerifyCodePageState extends State<VerifyCodePage> {
+class _VerifyCodeScreenBodyState extends State<VerifyCodeScreenBody> {
   final TextEditingController codeController = TextEditingController();
   late Timer timer;
   int countdown = 60; // Initial countdown time in seconds
@@ -100,72 +100,55 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
       ),
     );
 
-    return SafeScaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white.withOpacity(0.1),
-        leading: GestureDetector(
-          child: const Icon(Icons.arrow_back_ios),
-          onTap: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: const Text(
-          'التحقق من الرمز',
-          style: TextStyles.bold18,
-          textAlign: TextAlign.center,
-        ),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              "ادخل الرمز المرسل لك على رقم الجوال",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 20),
-            Pinput(
-              controller: codeController,
-              length: 6,
-              defaultPinTheme: defaultPinTheme,
-              focusedPinTheme: defaultPinTheme.copyWith(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: AppColor.primeColor),
-                ),
-              ),
-              submittedPinTheme: defaultPinTheme.copyWith(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.grey.shade200,
-                ),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Text(
+            "ادخل الرمز المرسل لك على رقم الجوال",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 16),
+          ),
+          const SizedBox(height: 20),
+          Pinput(
+            controller: codeController,
+            length: 6,
+            defaultPinTheme: defaultPinTheme,
+            focusedPinTheme: defaultPinTheme.copyWith(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: AppColor.primeColor),
               ),
             ),
-            const SizedBox(height: 20),
-            Text(
-              countdown > 0
-                  ? "إعادة إرسال الرمز بعد $countdown ثانية"
-                  : "يمكنك إعادة إرسال الرمز الآن",
-              style: const TextStyle(color: Colors.grey),
-            ),
-            const SizedBox(height: 20),
-            TextButton(
-              onPressed: _resendCode,
-              child: const Text("إعادة إرسال الرمز"),
-            ),
-            const SizedBox(height: 10),
-            CustomButton(
-              onPressed: _verifyCode,
-              widgetButton: Text(
-                'التحقق من الرمز',
-                style: TextStyles.semiBold18.copyWith(color: Colors.white),
+            submittedPinTheme: defaultPinTheme.copyWith(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.grey.shade200,
               ),
-            )
-          ],
-        ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            countdown > 0
+                ? "إعادة إرسال الرمز بعد $countdown ثانية"
+                : "يمكنك إعادة إرسال الرمز الآن",
+            style: const TextStyle(color: Colors.grey),
+          ),
+          const SizedBox(height: 20),
+          TextButton(
+            onPressed: _resendCode,
+            child: const Text("إعادة إرسال الرمز"),
+          ),
+          const SizedBox(height: 10),
+          CustomButton(
+            onPressed: _verifyCode,
+            widgetButton: Text(
+              'التحقق من الرمز',
+              style: TextStyles.semiBold18.copyWith(color: Colors.white),
+            ),
+          )
+        ],
       ),
     );
   }

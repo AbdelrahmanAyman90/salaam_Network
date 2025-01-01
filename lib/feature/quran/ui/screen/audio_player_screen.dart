@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_widget/safescreen.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
+import 'package:halqahquran/core/util/asset_app.dart';
 import 'package:halqahquran/feature/quran/ui/widgets/audio_operation_widget.dart';
 
 class AudioPlayScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class AudioPlayScreen extends StatelessWidget {
       required this.nameSorah,
       required this.linkAudio,
       required this.rederName});
-
+  static const routeName = "AudioPlayScreen";
   @override
   Widget build(BuildContext context) {
     return SafeScaffold(
@@ -29,7 +30,9 @@ class AudioPlayScreen extends StatelessWidget {
               width: 300,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/images/Rectangle.jpg"),
+                    image: AssetImage(
+                      AssetApp.quranImage,
+                    ),
                     fit: BoxFit.fill),
               ),
               child: Column(

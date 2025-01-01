@@ -1,9 +1,8 @@
 import 'dart:developer';
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:halqahquran/core/error/ecxption.dart';
 
 abstract class Failure {
   final String errorMassage;
@@ -17,26 +16,26 @@ class ServerFailuar extends Failure {
   factory ServerFailuar.fromDioError(DioException dioError) {
     switch (dioError.type) {
       case DioExceptionType.connectionTimeout:
-        return ServerFailuar("Connection timeout occurred");
+        return ServerFailuar("حدثت مهلة الاتصال");
       case DioExceptionType.sendTimeout:
-        return ServerFailuar("Send timeout occurred");
+        return ServerFailuar("حدثت مهلة أثناء الإرسال");
       case DioExceptionType.receiveTimeout:
-        return ServerFailuar("Receive timeout occurred");
+        return ServerFailuar("حدثت مهلة أثناء الاستلام");
       case DioExceptionType.badCertificate:
-        return ServerFailuar("Bad certificate error");
+        return ServerFailuar("خطأ في الشهادة");
       case DioExceptionType.badResponse:
         return ServerFailuar.fromResponse(
             dioError.response!.statusCode!, dioError.response!.data);
       case DioExceptionType.cancel:
-        return ServerFailuar("Request was cancelled");
+        return ServerFailuar("تم إلغاء الطلب");
       default:
         if (dioError.error is SocketException) {
           log(dioError.error.toString());
-          return ServerFailuar('No Internet Connection');
+          return ServerFailuar('لا يوجد اتصال بالإنترنت');
         } else if (dioError.error.toString().contains("is not a subtype of")) {
-          return ServerFailuar('Unable to process the data');
+          return ServerFailuar('تعذر معالجة البيانات');
         }
-        return ServerFailuar('Unknown error occurred');
+        return ServerFailuar('حدث خطأ غير معروف');
     }
   }
 
@@ -45,22 +44,22 @@ class ServerFailuar extends Failure {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       var message = response["data"];
       if (message is int) {
-        return ServerFailuar("Error 404!!");
+        return ServerFailuar("خطأ 404!!");
       } else {
         return ServerFailuar(response["status"].toString());
       }
     } else if (statusCode == 404) {
-      return ServerFailuar("Your request not found");
+      return ServerFailuar("طلبك غير موجود");
     } else if (statusCode == 500) {
-      return ServerFailuar('Try again later');
+      return ServerFailuar('حاول مرة أخرى لاحقًا');
     } else if (statusCode == 409) {
-      return ServerFailuar("Error due to a conflict");
+      return ServerFailuar("خطأ بسبب تعارض");
     } else if (statusCode == 408) {
-      return ServerFailuar("Connection request timeout");
+      return ServerFailuar("انتهت مهلة طلب الاتصال");
     } else if (statusCode == 503) {
-      return ServerFailuar("Service unavailable");
+      return ServerFailuar("الخدمة غير متوفرة");
     } else {
-      return ServerFailuar('Oops! An unexpected error occurred');
+      return ServerFailuar('عذرًا! حدث خطأ غير متوقع');
     }
   }
 
@@ -68,86 +67,86 @@ class ServerFailuar extends Failure {
   factory ServerFailuar.fromFirebaseError(FirebaseException firebaseError) {
     switch (firebaseError.code) {
       case 'network-request-failed':
-        return ServerFailuar('Network error: Please check your connection');
+        return ServerFailuar('خطأ في الشبكة: يرجى التحقق من الاتصال');
+      case 'invalid-verification-code':
+        return ServerFailuar('كود التحقق غير صالح');
       case 'permission-denied':
-        return ServerFailuar('Permission denied: Access not allowed');
+        return ServerFailuar('تم رفض الإذن: الوصول غير مسموح');
       case 'unauthenticated':
-        return ServerFailuar('User not authenticated');
+        return ServerFailuar('المستخدم غير مسجل الدخول');
       case 'unavailable':
-        return ServerFailuar('Service unavailable: Try again later');
+        return ServerFailuar('الخدمة غير متوفرة: حاول مرة أخرى لاحقًا');
       case 'internal':
-        return ServerFailuar('Internal server error');
+        return ServerFailuar('خطأ داخلي في الخادم');
       case 'invalid-argument':
-        return ServerFailuar('Invalid input provided');
+        return ServerFailuar('تم تقديم إدخال غير صالح');
       case 'not-found':
-        return ServerFailuar('Requested resource not found');
+        return ServerFailuar('المورد المطلوب غير موجود');
       default:
-        log(firebaseError.message ?? 'Unknown Firebase error');
-        return ServerFailuar(
-            firebaseError.message ?? 'An unknown error occurred');
+        log(firebaseError.message ?? 'خطأ غير معروف في Firebase');
+        return ServerFailuar(firebaseError.message ?? 'حدث خطأ غير معروف');
     }
   }
 
   /// Factory constructor for handling Firebase Authentication exceptions
   factory ServerFailuar.fromFirebaseAuthError(FirebaseAuthException authError) {
-    //invalid-credential
     switch (authError.code) {
       case 'invalid-email':
-        return ServerFailuar('The email address is not valid');
+        return ServerFailuar('البريد الإلكتروني غير صالح');
       case 'invalid-credential':
-        return ServerFailuar('passord or emial incorrect');
+        return ServerFailuar('البريد الإلكتروني أو كلمة المرور غير صحيحة');
       case 'user-disabled':
-        return ServerFailuar('This user has been disabled');
+        return ServerFailuar('تم تعطيل هذا المستخدم');
       case 'user-not-found':
-        return ServerFailuar('No user found with this email');
+        return ServerFailuar('لم يتم العثور على مستخدم بهذا البريد الإلكتروني');
       case 'wrong-password':
-        return ServerFailuar('Incorrect password entered');
+        return ServerFailuar('تم إدخال كلمة مرور غير صحيحة');
       case 'email-already-in-use':
-        return ServerFailuar('The email address is already in use');
+        return ServerFailuar('عنوان البريد الإلكتروني قيد الاستخدام بالفعل');
       case 'weak-password':
-        return ServerFailuar('The password is too weak');
+        return ServerFailuar('كلمة المرور ضعيفة جدًا');
       case 'network-request-failed':
         return ServerFailuar(
-            'Network request failed. Please check your internet connection.');
+            'فشل طلب الشبكة. يرجى التحقق من اتصالك بالإنترنت.');
       case 'operation-not-allowed':
-        return ServerFailuar('This operation is not allowed');
+        return ServerFailuar('هذا الإجراء غير مسموح به');
       case 'too-many-requests':
-        return ServerFailuar('Too many requests. Please try again later');
+        return ServerFailuar('طلبات كثيرة جدًا. يرجى المحاولة لاحقًا');
       case 'account-exists-with-different-credential':
         return ServerFailuar(
-            'An account already exists with the same email but different sign-in credentials');
+            'يوجد حساب بنفس البريد الإلكتروني ولكن بيانات اعتماد تسجيل دخول مختلفة');
       default:
-        log(authError.message ?? 'Unknown Firebase Auth error');
+        log(authError.message ?? 'خطأ غير معروف في Firebase Auth');
         return ServerFailuar(
-            authError.message ?? 'An unknown authentication error occurred');
+            authError.message ?? 'حدث خطأ غير معروف أثناء المصادقة');
     }
   }
-  // Factory constructor to handle Firebase Storage errors
+
+  /// Factory constructor to handle Firebase Storage errors
   factory ServerFailuar.fromFirebaseStorageError(
       FirebaseException storageError) {
     switch (storageError.code) {
       case 'object-not-found':
-        return ServerFailuar('No object exists at the specified path');
+        return ServerFailuar('لا يوجد كائن في المسار المحدد');
       case 'unauthorized':
-        return ServerFailuar('Unauthorized access to the specified resource');
+        return ServerFailuar('الوصول إلى المورد غير مصرح به');
       case 'cancelled':
-        return ServerFailuar('The operation was canceled');
+        return ServerFailuar('تم إلغاء العملية');
       case 'unknown':
-        return ServerFailuar('An unknown error occurred with Firebase Storage');
+        return ServerFailuar('حدث خطأ غير معروف مع Firebase Storage');
       case 'invalid-checksum':
         return ServerFailuar(
-            'File on the client does not match the checksum on the server');
+            'الملف على العميل لا يتطابق مع التحقق من الصحة على الخادم');
       case 'quota-exceeded':
-        return ServerFailuar('Quota for Firebase Storage has been exceeded');
+        return ServerFailuar('تم تجاوز الحصة المخصصة لتخزين Firebase');
       case 'retry-limit-exceeded':
-        return ServerFailuar('Too many retry attempts for the operation');
+        return ServerFailuar('محاولات إعادة المحاولة كثيرة جدًا');
       case 'download-size-exceeded':
-        return ServerFailuar(
-            'The downloaded file exceeds the maximum allowed size');
+        return ServerFailuar('يتجاوز الملف الذي تم تنزيله الحجم المسموح به');
       default:
-        log(storageError.message ?? 'Unknown Firebase Storage error');
+        log(storageError.message ?? 'خطأ غير معروف في Firebase Storage');
         return ServerFailuar(
-            storageError.message ?? 'An unknown storage error occurred');
+            storageError.message ?? 'حدث خطأ غير معروف أثناء التخزين');
     }
   }
 }

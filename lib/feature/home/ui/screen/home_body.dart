@@ -9,14 +9,14 @@ import 'package:halqahquran/feature/home/ui/widget/top_page_home.dart';
 import 'package:halqahquran/feature/muslem_service/cubit/cubit/sevice_muslm_cubit.dart';
 import 'package:halqahquran/core/util/screen_util.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreenBody extends StatefulWidget {
+  const HomeScreenBody({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreenBody> createState() => _HomeScreenBodyState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenBodyState extends State<HomeScreenBody> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

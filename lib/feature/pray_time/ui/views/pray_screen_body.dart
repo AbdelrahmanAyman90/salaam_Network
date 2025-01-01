@@ -13,7 +13,6 @@ class PrayScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = context.read<PrayCubit>();
     return WillPopScope(
       onWillPop: () async {
         // !Perform your action when the back button is pressed

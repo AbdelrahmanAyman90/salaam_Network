@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:halqahquran/core/global/global_widget/safescreen.dart';
 import 'package:halqahquran/core/service/permission_service.dart';
+import 'package:halqahquran/core/util/asset_app.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 
@@ -82,7 +83,9 @@ class _QublaScreenState extends State<QublaScreen>
                           animation: animation!,
                           builder: (context, child) => Transform.rotate(
                             angle: animation!.value,
-                            child: Image.asset('assets/images/qibla.png'),
+                            child: Image.asset(
+                              AssetApp.qublahImage,
+                            ),
                           ),
                         ),
                       ),

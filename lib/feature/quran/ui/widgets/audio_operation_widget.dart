@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:halqahquran/core/global/global_widget/show_toats.dart';
+import 'package:halqahquran/core/status/show_toats.dart';
 import 'package:halqahquran/feature/quran/ui/screen/audio_player_screen.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart'; // For combining streams
@@ -64,7 +64,7 @@ class _AudioOperationState extends State<AudioOperation> {
             children: [
               // Rewind 10 seconds
               IconButton(
-                icon: const Icon(Icons.replay_10),
+                icon: const Icon(Icons.forward_10),
                 onPressed: () {
                   final newPosition =
                       _audioPlayer.position - const Duration(seconds: 10);
@@ -111,7 +111,7 @@ class _AudioOperationState extends State<AudioOperation> {
 
               // Forward 10 seconds
               IconButton(
-                icon: const Icon(Icons.forward_10),
+                icon: const Icon(Icons.replay_10),
                 onPressed: () {
                   final newPosition =
                       _audioPlayer.position + const Duration(seconds: 10);

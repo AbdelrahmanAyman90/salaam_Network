@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'package:halqahquran/core/service/api_service.dart';
 import 'package:halqahquran/core/service/firebase_auth_service.dart';
 import 'package:halqahquran/core/service/firebase_sevice.dart';
 import 'package:halqahquran/feature/Auth/data/repo/auth_repo_impl.dart';
@@ -11,6 +12,9 @@ import 'package:halqahquran/feature/chat/domain/repo/chat_repo.dart';
 import 'package:halqahquran/feature/chat/ui/cubit/cubit/chat_cubit.dart';
 import 'package:halqahquran/feature/edit_profile/data/repo/edit_profile_repo_impl.dart';
 import 'package:halqahquran/feature/edit_profile/domain/repos/edit_profile_repo.dart';
+import 'package:halqahquran/feature/pray_time/data/repo/pray_time_repo.dart';
+import 'package:halqahquran/feature/pray_time/data/repo/pray_time_repo.dart';
+import 'package:halqahquran/feature/pray_time/domain/pray_repo.dart';
 import 'package:halqahquran/feature/stream/data/repos/stream_repo_impl.dart';
 import 'package:halqahquran/feature/stream/domain/repos/stream_repo.dart';
 
@@ -38,6 +42,11 @@ void setupServiceLocator() {
   getIt.registerSingleton<StreamRepo>(
     StreamRepoImpl(
       firebaseService: getIt<FirebaseService>(),
+    ),
+  );
+  getIt.registerSingleton<PrayTimeRepo>(
+    PrayTimeRepoImpl(
+      apiServes: ApiServes(dio: creatdio()),
     ),
   );
 }

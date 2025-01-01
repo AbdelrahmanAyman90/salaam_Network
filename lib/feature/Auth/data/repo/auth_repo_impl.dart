@@ -7,10 +7,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:halqahquran/core/error/network_error.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_convert_hour.dart';
-import 'package:halqahquran/core/global/global_function/upload_image.dart';
+import 'package:halqahquran/core/service/upload_image_service.dart';
 import 'package:halqahquran/core/service/firebase_auth_service.dart';
 import 'package:halqahquran/core/service/firebase_sevice.dart';
-import 'package:halqahquran/core/service/shard_pref_service.dart';
+import 'package:halqahquran/core/util/app_pref.dart';
 import 'package:halqahquran/core/util/const_varible.dart';
 import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
 import 'package:halqahquran/feature/Auth/domain/entity/user_entity.dart';
@@ -80,7 +80,11 @@ class AuthRepoImpl implements AuthRepo {
       if (e is FirebaseAuthException) {
         return left(ServerFailuar.fromFirebaseAuthError(e)); //! return
       } else if (e is FirebaseException) {
-        return left(ServerFailuar.fromFirebaseError(e)); //! return
+        // Handle specific Firebase Storage errors
+        if (e.plugin == 'firebase_storage') {
+          return left(ServerFailuar.fromFirebaseStorageError(e));
+        }
+        return left(ServerFailuar.fromFirebaseError(e));
       }
       return left(ServerFailuar("حاول مره اخرى")); //! return
     }
@@ -110,7 +114,11 @@ class AuthRepoImpl implements AuthRepo {
       if (e is FirebaseAuthException) {
         return left(ServerFailuar.fromFirebaseAuthError(e)); //! return
       } else if (e is FirebaseException) {
-        return left(ServerFailuar.fromFirebaseError(e)); //! return
+        // Handle specific Firebase Storage errors
+        if (e.plugin == 'firebase_storage') {
+          return left(ServerFailuar.fromFirebaseStorageError(e));
+        }
+        return left(ServerFailuar.fromFirebaseError(e));
       }
       return left(ServerFailuar("حاول مره اخرى")); //! return
     }
@@ -188,5 +196,6 @@ class AuthRepoImpl implements AuthRepo {
       UserModel.fromUserEntity(user).toMap(),
     ); // convert to json(string)
     await SharedPrefService.setString(kUser, jsonData);
+    await SharedPrefService.setBool(kuserIsLogin, true);
   }
 }

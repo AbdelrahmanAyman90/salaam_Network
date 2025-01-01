@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_function/fun_to_convert_string_to_timeofday.dart';
-import 'package:halqahquran/core/service/shard_pref_service.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
+import 'package:halqahquran/core/util/app_pref.dart';
 import 'package:halqahquran/core/util/const_varible.dart';
 import 'package:halqahquran/feature/notfication/local_notfication_helper.dart';
 

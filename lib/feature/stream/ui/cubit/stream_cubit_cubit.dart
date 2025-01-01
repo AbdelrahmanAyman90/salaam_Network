@@ -23,4 +23,19 @@ class StreamCubit extends Cubit<StreamCubitState> {
               streamModel: r,
             )));
   }
+
+  Stream<List<StreamModel>> getStreams() {
+    final result = streamRepo.getStreams();
+    return result;
+  }
+
+  Future<void> endStream({
+    required String streamId,
+    required String imageBeforUpload,
+  }) async {
+    final result = await streamRepo.endStream(
+        streamId: streamId, imageBeforUpload: imageBeforUpload);
+    result.fold((l) => emit(EndStreamError(errorMessage: l.errorMassage)),
+        (r) => emit(EndStreamSuccess()));
+  }
 }

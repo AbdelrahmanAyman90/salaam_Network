@@ -1,10 +1,12 @@
 import 'dart:developer';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/global/global_function/get_user_data.dart';
+import 'package:halqahquran/core/status/circuler_image_shimmer.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
@@ -38,9 +40,22 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
               children: [
                 CircleAvatar(
                   radius: 35.r,
-                  backgroundImage: NetworkImage(getUserData().image!.isEmpty
-                      ? "https://static.vecteezy.com/ti/vetor-gratis/p1/26434417-padrao-avatar-perfil-icone-do-social-meios-de-comunicacao-do-utilizador-foto-vetor.jpg"
-                      : getUserData().image!),
+                  child: ClipOval(
+                    child: CachedNetworkImage(
+                      imageUrl: getUserData().image ??
+                          "https://static.vecteezy.com/ti/vetor-gratis/p1/26434417-padrao-avatar-perfil-icone-do-social-meios-de-comunicacao-do-utilizador-foto-vetor.jpg",
+                      placeholder: (context, url) =>
+                          ShimmerCirculerImage(), // Placeholder while loading
+                      errorWidget: (context, url, error) => Icon(
+                        Icons.person,
+                        size: 35.r,
+                        color: Colors.grey,
+                      ), // Icon for errors
+                      fit: BoxFit.cover,
+                      height: 70.r,
+                      width: 70.r,
+                    ),
+                  ),
                 ),
                 AppSize.width(20),
                 Column(
@@ -77,14 +92,16 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
               tittel: "الملف الشخصي",
               icon: Icons.person_outlined,
               onTapped: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const EditProfileScreen();
-                    },
-                  ),
-                ).then((value) => setState(() {}));
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return const EditProfileScreen();
+                //     },
+                //   ),
+                // ).then((value) => setState(() {}));
+                Navigator.pushNamed(context, EditProfileScreen.routeName)
+                    .then((value) => setState(() {}));
               },
             ),
             AppSize.hight(10),
@@ -92,14 +109,15 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
               tittel: "تغيير كلمة المرور",
               icon: Icons.lock_outlined,
               onTapped: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const ChangePasswordScreen();
-                    },
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return const ChangePasswordScreen();
+                //     },
+                //   ),
+                // );
+                Navigator.pushNamed(context, ChangePasswordScreen.routeName);
               },
             ),
             AppSize.hight(10),

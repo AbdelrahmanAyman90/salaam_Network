@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:halqahquran/core/global/global_widget/error_snakbar.dart';
+import 'package:halqahquran/core/status/custom_snackbar.dart';
+import 'package:halqahquran/core/status/error_snakbar.dart';
 import 'package:halqahquran/feature/chat/data/repo/chat_repo_impl.dart';
 
 class DeleteConfirmation extends StatelessWidget {

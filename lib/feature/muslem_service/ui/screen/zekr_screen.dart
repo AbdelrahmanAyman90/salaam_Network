@@ -15,6 +15,7 @@ class ZekrScreen extends StatelessWidget {
       {super.key, required this.iteamListData, required this.tittel});
   final List<dynamic> iteamListData;
   final String tittel;
+  static const String routeName = 'zekrScreen';
   @override
   Widget build(BuildContext context) {
     log(iteamListData.first.toString());

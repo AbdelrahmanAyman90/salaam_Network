@@ -9,7 +9,8 @@ abstract class StreamRepo {
   });
 
 //!stream
-  Future<List<StreamModel>> getStreams();
+  Stream<List<StreamModel>> getStreams();
 
-  Future<Either<Failure, StreamModel>> endStream();
+  Future<Either<Failure, bool>> endStream(
+      {required String streamId, required String imageBeforUpload});
 }

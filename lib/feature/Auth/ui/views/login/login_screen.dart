@@ -13,37 +13,23 @@ import 'package:halqahquran/feature/Auth/ui/views/login/login_view_consumer.dart
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
-
+  static const String routeName = 'login';
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => LoginCubit(
-            authRepo: getIt<AuthRepo>(),
-          ),
-        ),
-        BlocProvider(
-          create: (context) => SocialAuthCubit(
-            authRepo: getIt<AuthRepo>(),
-          ),
-        ),
-      ],
-      child: SafeScaffold(
-        body: Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                colors: [
-                  AppColor.primeColor,
-                  AppColor.primeColor.withOpacity(.8),
-                  AppColor.primeColor.withOpacity(.4),
-                ],
-              ),
+    return SafeScaffold(
+      body: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              colors: [
+                AppColor.primeColor,
+                AppColor.primeColor.withOpacity(.8),
+                AppColor.primeColor.withOpacity(.4),
+              ],
             ),
-            child: const LoginViewConsumer()),
-      ),
+          ),
+          child: const LoginViewConsumer()),
     );
   }
 }

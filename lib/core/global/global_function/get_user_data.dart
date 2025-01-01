@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:halqahquran/core/service/shard_pref_service.dart';
+import 'package:halqahquran/core/util/app_pref.dart';
 import 'package:halqahquran/core/util/const_varible.dart';
 import 'package:halqahquran/feature/Auth/domain/entity/user_entity.dart';
 

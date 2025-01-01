@@ -11,40 +11,26 @@ import 'package:halqahquran/feature/Auth/ui/views/register/register_view_consume
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
-
+  static const String routeName = 'register';
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => RegisterCubit(
-            authRepo: getIt<AuthRepo>(),
-          ),
+    return SafeScaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white.withOpacity(0.1),
+        leading: GestureDetector(
+          child: const Icon(Icons.arrow_back_ios),
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
-        BlocProvider(
-          create: (context) => SocialAuthCubit(
-            authRepo: getIt<AuthRepo>(),
-          ),
+        title: const Text(
+          'حساب جديد',
+          style: TextStyles.bold18,
+          textAlign: TextAlign.center,
         ),
-      ],
-      child: SafeScaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white.withOpacity(0.1),
-          leading: GestureDetector(
-            child: const Icon(Icons.arrow_back_ios),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          title: const Text(
-            'حساب جديد',
-            style: TextStyles.bold18,
-            textAlign: TextAlign.center,
-          ),
-          centerTitle: true,
-        ),
-        body: const RegisterViewConsumer(),
+        centerTitle: true,
       ),
+      body: const RegisterViewConsumer(),
     );
   }
 }

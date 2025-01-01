@@ -17,12 +17,18 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
     emit(PasswordResetLoading());
     try {
       await _auth.verifyPhoneNumber(
-        phoneNumber: '+201210631530',
+        phoneNumber: phoneNumber,
         //phoneNumber,
         timeout: const Duration(seconds: 60),
         verificationCompleted: (PhoneAuthCredential credential) async {},
         verificationFailed: (FirebaseAuthException e) {
-          emit(PasswordResetError(e.message ?? "Verification failed."));
+          if (e.code == 'invalid-phone-number') {
+            emit(PasswordResetError("رقم الهاتف غير صحيح"));
+          } else if (e.code == 'invalid-verification-code') {
+            emit(PasswordResetError("رمز التحقق غير صحيح"));
+          } else {
+            emit(PasswordResetError("Failed : $e"));
+          }
         },
         codeSent: (String verificationId, int? resendToken) {
           _verificationId = verificationId;
@@ -47,8 +53,17 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
       );
       await _auth.signInWithCredential(credential);
       emit(PasswordResetVerified()); //!
-    } catch (e) {
-      emit(PasswordResetError("Invalid code: $e"));
+    } on Exception catch (e) {
+      log(e.toString());
+      if (e is FirebaseAuthException) {
+        if (e.code == 'invalid-phone-number') {
+          emit(PasswordResetError("رقم الهاتف غير صحيح"));
+        } else if (e.code == 'invalid-verification-code') {
+          emit(PasswordResetError("رمز التحقق غير صحيح"));
+        } else {
+          emit(PasswordResetError("Failed : $e"));
+        }
+      }
     }
   }
 

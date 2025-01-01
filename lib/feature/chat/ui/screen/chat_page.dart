@@ -20,7 +20,7 @@ class MassagesScreen extends StatefulWidget {
   });
   final String chatId;
   final UserModel userDate;
-
+  static const String routeName = 'massagesScreen';
   @override
   State<MassagesScreen> createState() => _MassagesScreenState();
 }

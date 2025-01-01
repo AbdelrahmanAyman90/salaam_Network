@@ -5,7 +5,7 @@ class QuranImageScreen extends StatefulWidget {
   final int numberPage;
 
   const QuranImageScreen({super.key, required this.numberPage});
-
+  static const routeName = 'QuranImageScreen';
   @override
   _QuranImageScreenState createState() => _QuranImageScreenState();
 }

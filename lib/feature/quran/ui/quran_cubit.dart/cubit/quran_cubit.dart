@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/services.dart';
+import 'package:halqahquran/core/util/json_const.dart';
 import 'package:halqahquran/feature/quran/data/model/quran_model.dart';
 import 'package:halqahquran/feature/quran/data/model/reder_model.dart';
 import 'package:meta/meta.dart';
@@ -16,7 +17,7 @@ class QuranCubit extends Cubit<QuranState> {
     quranDataList.clear();
     try {
       final String response =
-          await rootBundle.loadString('assets/json/surah_name.json');
+          await rootBundle.loadString(AppJson.surahNameJson);
       final data = await json.decode(response);
       for (var i in data['data']) {
         quranDataList.add(QuranModel.fromJson(i));
@@ -32,8 +33,7 @@ class QuranCubit extends Cubit<QuranState> {
   getRederData() async {
     rederDataList.clear();
     try {
-      final String response =
-          await rootBundle.loadString('assets/json/audio.json');
+      final String response = await rootBundle.loadString(AppJson.audioJson);
       final data = await json.decode(response);
 /**
  *         ..sort((firstName, secondNmae) => firstName['name']

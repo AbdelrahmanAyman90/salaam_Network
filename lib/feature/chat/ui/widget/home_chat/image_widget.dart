@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:halqahquran/core/status/circuler_image_shimmer.dart';
 import 'package:halqahquran/core/theme/color.dart';
+import 'package:halqahquran/core/util/asset_app.dart';
 import 'package:halqahquran/feature/Auth/data/model/user_model.dart';
 import 'package:halqahquran/feature/chat/data/model/chat_model.dart';
 
@@ -25,15 +27,13 @@ class ImageUserWidget extends StatelessWidget {
         child: userChats.image != null
             ? CachedNetworkImage(
                 imageUrl: userChats.image!,
-                placeholder: (context, url) => const Center(
-                  child: CircularProgressIndicator(),
-                ),
+                placeholder: (context, url) => const ShimmerCirculerImage(),
                 errorWidget: (context, url, error) =>
                     const Center(child: Icon(Icons.error)),
                 fit: BoxFit.cover,
               )
             : Image.asset(
-                "assets/images/no-dp_16.webp",
+                AssetApp.emptyPerson,
                 fit: BoxFit.cover,
               ),
       ),

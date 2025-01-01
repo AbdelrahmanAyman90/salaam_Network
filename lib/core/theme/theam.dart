@@ -25,7 +25,6 @@ class AppTheme {
       unselectedIconTheme: const IconThemeData(color: Colors.black),
       elevation: 8,
     ),
-    inputDecorationTheme: _inputDecorationTheme(AppColor.fillTextField),
     bottomAppBarTheme: BottomAppBarTheme(color: AppColor.colorBottomBar),
   );
 
@@ -51,13 +50,19 @@ class AppTheme {
       unselectedIconTheme: IconThemeData(color: Colors.white),
       elevation: 8,
     ),
-    inputDecorationTheme: _inputDecorationTheme(const Color(0xff1e1e1e)),
+    inputDecorationTheme: _inputDecorationTheme(
+      const Color(0xff1e1e1e),
+      const TextStyle(color: Colors.white),
+    ),
     bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xFF2B2B2B)),
   );
 
-  static InputDecorationTheme _inputDecorationTheme(Color fillColor) {
+  static InputDecorationTheme _inputDecorationTheme(
+      Color fillColor, TextStyle hintText) {
     return InputDecorationTheme(
       fillColor: fillColor,
+      hintStyle: hintText,
+      labelStyle: const TextStyle(color: Colors.blueGrey),
       filled: true,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),

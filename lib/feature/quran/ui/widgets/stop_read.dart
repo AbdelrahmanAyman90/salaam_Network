@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:halqahquran/core/theme/color.dart';
 import 'package:halqahquran/core/theme/size.dart';
 import 'package:halqahquran/core/theme/text_style.dart';
+import 'package:halqahquran/core/util/asset_app.dart';
 import 'package:halqahquran/core/util/screen_util.dart';
 
 class StopReadCard extends StatelessWidget {
@@ -88,7 +89,7 @@ class StopReadCard extends StatelessWidget {
                 ],
               ),
               Image.asset(
-                "assets/images/Rectangle4.png",
+                AssetApp.quranStopRead,
                 width: 140,
               ),
             ],

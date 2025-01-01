@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:halqahquran/core/theme/color.dart';
+import 'package:halqahquran/core/theme/text_style.dart';
+import 'package:halqahquran/feature/Auth/ui/widget/custtom_button.dart';
 import 'package:halqahquran/feature/forget_password/cubit/forget_password_cubit.dart';
 
 class UpdatePasswordBody extends StatefulWidget {
@@ -59,21 +61,19 @@ class _UpdatePasswordBodyState extends State<UpdatePasswordBody> {
             ),
             const SizedBox(height: 30),
             // Update Button
-            ElevatedButton(
+            CustomButton(
               onPressed: () async {
                 if (_formKey.currentState?.validate() ?? false) {
                   final cubit = context.read<ForgetPasswordCubit>();
                   final newPassword = _newPasswordController.text;
                   // Call the update password logic from the cubit
                   await cubit.updatePassword(newPassword: newPassword);
-                  Navigator.of(context)
-                      .pop(); // Navigate back after successful update
                 }
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColor.primeColor,
+              widgetButton: Text(
+                'تحديث كلمة المرور',
+                style: TextStyles.semiBold18.copyWith(color: Colors.white),
               ),
-              child: const Text('تحديث'),
             ),
           ],
         ),

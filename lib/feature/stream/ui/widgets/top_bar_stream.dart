@@ -10,41 +10,40 @@ class TopBarStream extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text(
-            " بث مباشر",
-            style: TextStyles.semiBold26,
-          ),
-          IconButton(
-            onPressed: () async {
-              // Show the modal sheet
-              WoltModalSheet.show<void>(
-                context: context,
-                pageListBuilder: (modalSheetContext) {
-                  return [
-                    WoltModalSheetPage(
-                      child: BlocProvider.value(
-                        value: context.read<StreamCubit>(),
-                        child: const BottomSheetStream(),
-                      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          " بث مباشر",
+          style: TextStyles.semiBold26,
+        ),
+        IconButton(
+          onPressed: () async {
+            // Show the modal sheet
+            WoltModalSheet.show<void>(
+              context: context, // Use the context of the TopBarStream widget
+              pageListBuilder: (modalSheetContext) {
+                // modalSheetContext is the context of the modal sheet
+                return [
+                  WoltModalSheetPage(
+                    child: BlocProvider.value(
+                      value: context.read<
+                          StreamCubit>(), // Provide the existing StreamCubit using the TopBarStream context
+                      child: const BottomSheetStream(),
                     ),
-                  ];
-                },
-              );
+                  ),
+                ];
+              },
+            );
 
-              // Call the cubit method
-            },
-            icon: const Icon(
-              Icons.add_circle_outline_outlined,
-              size: 38,
-            ),
+            // Call the cubit method
+          },
+          icon: const Icon(
+            Icons.add_circle_outline_outlined,
+            size: 38,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

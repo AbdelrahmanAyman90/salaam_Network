@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:halqahquran/core/service/shard_pref_service.dart';
+import 'package:halqahquran/core/util/app_pref.dart';
 import 'package:halqahquran/core/util/const_varible.dart';
 import 'package:halqahquran/feature/notfication/workmanager_helper.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
@@ -78,8 +78,8 @@ class LocalNotificationService {
     }
     await flutterLocalNotificationsPlugin.zonedSchedule(
       prayerName.hashCode,
-      '$prayerName Prayer Time',
-      'It\'s time for $prayerName prayer.',
+      "$prayerName",
+      "حان وقت صلاة $prayerName",
       scheduleTime,
       details,
       payload: 'zonedSchedule',

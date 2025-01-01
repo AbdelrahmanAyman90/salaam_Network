@@ -8,10 +8,11 @@ import 'package:halqahquran/feature/edit_profile/domain/repos/edit_profile_repo.
 import 'package:halqahquran/feature/edit_profile/ui/cubit/edit_profile_cubit.dart';
 import 'package:halqahquran/feature/edit_profile/ui/screen/edit_profile_body.dart';
 import 'package:halqahquran/feature/edit_profile/ui/screen/edit_profile_screen_consummer.dart';
+import 'package:halqahquran/generated/l10n.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
-
+  static const routeName = 'EditProfileScreen';
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
